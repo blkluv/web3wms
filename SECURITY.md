@@ -19,7 +19,7 @@
 
 Если вы обнаружили уязвимость безопасности, пожалуйста, **НЕ** создавайте публичный issue. Вместо этого:
 
-1. **Отправьте email** на: security@yourproject.com
+1. **Отправьте email** на: oglenyaboss@icloud.com
 2. **Включите следующую информацию**:
    - Описание уязвимости
    - Шаги для воспроизведения
@@ -294,12 +294,6 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
    - Постоянные исправления
    - Анализ первопричин
    - Обновление процедур
-
-### Контакты для экстренных случаев
-
-- **Security Team**: security@yourproject.com
-- **Phone**: +1-XXX-XXX-XXXX (24/7)
-- **Incident Response**: incident@yourproject.com
 
 ## 📚 Дополнительные ресурсы
 
