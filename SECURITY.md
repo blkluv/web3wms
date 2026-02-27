@@ -1,95 +1,95 @@
-# Безопасность
+# Security
 
-## Политика безопасности
+## Security Policy
 
-Безопасность является приоритетом для системы управления складом и отслеживания оборудования. Этот документ описывает политику безопасности проекта и процедуры сообщения об уязвимостях.
+Security is a priority for the warehouse management and equipment tracking system. This document describes the project's security policy and procedures for reporting vulnerabilities.
 
-## 🛡️ Поддерживаемые версии
+## 🛡️ Supported Versions
 
-В настоящее время поддерживаются следующие версии проекта:
+Currently, the following versions of the project are supported:
 
-| Версия | Поддержка безопасности    |
-| ------ | ------------------------- |
-| 1.0.x  | ✅ Активно поддерживается |
-| < 1.0  | ❌ Не поддерживается      |
+| Version | Security Support          |
+| ------- | ------------------------- |
+| 1.0.x   | ✅ Actively supported     |
+| < 1.0   | ❌ Not supported          |
 
-## 🔍 Сообщение об уязвимостях
+## 🔍 Reporting Vulnerabilities
 
-### Как сообщить об уязвимости
+### How to Report a Vulnerability
 
-Если вы обнаружили уязвимость безопасности, пожалуйста, **НЕ** создавайте публичный issue. Вместо этого:
+If you have discovered a security vulnerability, please **DO NOT** create a public issue. Instead:
 
-1. **Отправьте email** на: oglenyaboss@icloud.com
-2. **Включите следующую информацию**:
-   - Описание уязвимости
-   - Шаги для воспроизведения
-   - Возможное влияние
-   - Предлагаемое решение (если есть)
-3. **Мы ответим в течение 48 часов** с подтверждением получения
-4. **Обновления** будут предоставляться каждые 72 часа до решения
+1. **Send an email** to: oglenyaboss@icloud.com
+2. **Include the following information**:
+   - Description of the vulnerability
+   - Steps to reproduce
+   - Potential impact
+   - Proposed solution (if any)
+3. **We will respond within 48 hours** with a confirmation of receipt
+4. **Updates** will be provided every 72 hours until resolution
 
-### Процесс обработки уязвимостей
+### Vulnerability Handling Process
 
-1. **Получение отчета** (Day 0)
+1. **Receipt of Report** (Day 0)
 
-   - Подтверждение получения в течение 48 часов
-   - Первичная оценка серьезности
+   - Confirmation of receipt within 48 hours
+   - Initial severity assessment
 
-2. **Анализ и воспроизведение** (Days 1-3)
+2. **Analysis and Reproduction** (Days 1-3)
 
-   - Воспроизведение уязвимости
-   - Оценка влияния и риска
-   - Присвоение CVSS рейтинга
+   - Reproduction of the vulnerability
+   - Impact and risk assessment
+   - CVSS rating assignment
 
-3. **Разработка исправления** (Days 4-14)
+3. **Fix Development** (Days 4-14)
 
-   - Создание патча
-   - Внутреннее тестирование
-   - Подготовка advisory
+   - Patch creation
+   - Internal testing
+   - Advisory preparation
 
-4. **Развертывание и раскрытие** (Days 15-30)
-   - Выпуск патча
-   - Публикация security advisory
-   - Координированное раскрытие
+4. **Deployment and Disclosure** (Days 15-30)
+   - Patch release
+   - Security advisory publication
+   - Coordinated disclosure
 
-### Критерии серьезности
+### Severity Criteria
 
-#### 🔴 Критичная (CVSS 9.0-10.0)
+#### 🔴 Critical (CVSS 9.0-10.0)
 
-- Удаленное выполнение кода
-- Полный компромисс системы
-- Доступ к blockchain приватным ключам
+- Remote code execution
+- Full system compromise
+- Access to blockchain private keys
 
-#### 🟠 Высокая (CVSS 7.0-8.9)
+#### 🟠 High (CVSS 7.0-8.9)
 
-- SQL injection в критичных компонентах
-- Обход аутентификации
-- Несанкционированный доступ к данным
+- SQL injection in critical components
+- Authentication bypass
+- Unauthorized data access
 
-#### 🟡 Средняя (CVSS 4.0-6.9)
+#### 🟡 Medium (CVSS 4.0-6.9)
 
-- XSS атаки
-- CSRF уязвимости
-- Информационные утечки
+- XSS attacks
+- CSRF vulnerabilities
+- Information leaks
 
-#### 🟢 Низкая (CVSS 0.1-3.9)
+#### 🟢 Low (CVSS 0.1-3.9)
 
-- DoS атаки
-- Минорные утечки информации
-- Проблемы конфигурации
+- DoS attacks
+- Minor information leaks
+- Configuration issues
 
-## 🔒 Реализованные меры безопасности
+## 🔒 Implemented Security Measures
 
-### Аутентификация и авторизация
+### Authentication and Authorization
 
 ```go
-// JWT токены с коротким временем жизни
+// JWT tokens with short lifetime
 const (
     AccessTokenExpiry  = 15 * time.Minute
     RefreshTokenExpiry = 7 * 24 * time.Hour
 )
 
-// Роли и права доступа
+// Roles and access rights
 type Role string
 const (
     RoleAdmin     Role = "admin"
@@ -99,36 +99,36 @@ const (
 )
 ```
 
-### Шифрование данных
+### Data Encryption
 
-- **Пароли**: Bcrypt с cost 12
-- **JWT токены**: RS256 алгоритм
-- **Данные в transit**: TLS 1.2+
+- **Passwords**: Bcrypt with cost 12
+- **JWT Tokens**: RS256 algorithm
+- **Data in transit**: TLS 1.2+
 - **Blockchain**: Ethereum cryptography
 
-### Валидация входных данных
+### Input Validation
 
 ```go
-// Валидация на уровне структур
+// Struct level validation
 type User struct {
     Username string `validate:"required,alphanum,min=3,max=50"`
     Email    string `validate:"required,email"`
     Password string `validate:"required,min=8,max=128"`
 }
 
-// Санитизация HTML
+// HTML Sanitization
 func sanitizeInput(input string) string {
     p := bluemonday.UGCPolicy()
     return p.Sanitize(input)
 }
 ```
 
-### Защита от атак
+### Attack Protection
 
 #### CSRF Protection
 
 ```typescript
-// Frontend автоматически включает CSRF токены
+// Frontend automatically includes CSRF tokens
 const csrfToken = document
   .querySelector('meta[name="csrf-token"]')
   ?.getAttribute("content");
@@ -137,22 +137,22 @@ const csrfToken = document
 #### XSS Protection
 
 ```typescript
-// Экранирование всех пользовательских данных
+// Escaping all user data
 const safeHTML = DOMPurify.sanitize(userInput);
 ```
 
 #### SQL/NoSQL Injection
 
 ```go
-// Использование подготовленных запросов
+// Using prepared queries
 filter := bson.M{"username": username}
 err := collection.FindOne(ctx, filter).Decode(&user)
 ```
 
-### Аудит и логирование
+### Audit and Logging
 
 ```go
-// Структурированное логирование
+// Structured logging
 log.WithFields(log.Fields{
     "user_id":    userID,
     "action":     "login_attempt",
@@ -162,38 +162,38 @@ log.WithFields(log.Fields{
 }).Warn("Failed login attempt")
 ```
 
-### Контейнеризация и изоляция
+### Containerization and Isolation
 
 ```dockerfile
-# Использование non-root пользователя
+// Using non-root user
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 USER nextjs
 
-# Минимальный базовый образ
+// Minimal base image
 FROM node:18-alpine AS runner
 ```
 
-## 🔧 Конфигурация безопасности
+## 🔧 Security Configuration
 
 ### Environment Variables
 
 ```bash
-# Критичные переменные должны быть установлены
+# Critical variables must be set
 JWT_SECRET=your-256-bit-secret
 DATABASE_ENCRYPTION_KEY=your-encryption-key
 CORS_ALLOWED_ORIGINS=https://yourdomain.com
 
-# Безопасные значения по умолчанию
+# Secure default values
 SESSION_TIMEOUT=900
 MAX_LOGIN_ATTEMPTS=5
 RATE_LIMIT_REQUESTS=100
 ```
 
-### Сетевая безопасность
+### Network Security
 
 ```yaml
-# Docker Compose сеть
+# Docker Compose network
 networks:
   warehouse-network:
     driver: bridge
@@ -202,24 +202,24 @@ networks:
         - subnet: 172.20.0.0/16
 ```
 
-### Мониторинг безопасности
+### Security Monitoring
 
 ```go
-// Детекция аномальной активности
+// Anomaly detection
 func (s *SecurityService) DetectAnomalies(userID string, action string) {
-    // Проверка частоты запросов
+    // Check request frequency
     if s.rateLimiter.IsExceeded(userID) {
         s.logSuspiciousActivity(userID, "rate_limit_exceeded")
     }
 
-    // Проверка необычного времени активности
+    // Check unusual activity time
     if s.isUnusualTime(time.Now()) {
         s.logSuspiciousActivity(userID, "unusual_time_activity")
     }
 }
 ```
 
-## 🛠️ Инструменты безопасности
+## 🛠️ Security Tools
 
 ### Static Analysis
 
@@ -236,10 +236,10 @@ npm audit fix
 ### Dependency Scanning
 
 ```bash
-# Go модули
+# Go modules
 go list -m -u all
 
-# Node.js пакеты
+# Node.js packages
 npm outdated
 npm update
 ```
@@ -247,78 +247,78 @@ npm update
 ### Container Security
 
 ```bash
-# Сканирование Docker образов
+# Docker image scanning
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
   aquasec/trivy image your-image:tag
 ```
 
 ## 📋 Security Checklist
 
-### Для разработчиков
+### For Developers
 
-- [ ] Все пользовательские данные валидируются
-- [ ] Используются параметризованные запросы
-- [ ] Пароли хэшируются с солью
-- [ ] Токены имеют ограниченное время жизни
-- [ ] Логируются события безопасности
-- [ ] Код проходит static analysis
-- [ ] Зависимости регулярно обновляются
+- [ ] All user data is validated
+- [ ] Parameterized queries are used
+- [ ] Passwords are hashed with salt
+- [ ] Tokens have limited lifetime
+- [ ] Security events are logged
+- [ ] Code passes static analysis
+- [ ] Dependencies are regularly updated
 
-### Для деплоя
+### For Deployment
 
-- [ ] TLS сертификаты настроены
-- [ ] Firewall правила применены
-- [ ] Секреты не хранятся в коде
-- [ ] Backup и disaster recovery настроены
-- [ ] Мониторинг безопасности активен
-- [ ] Rate limiting настроен
-- [ ] CORS политики применены
+- [ ] TLS certificates configured
+- [ ] Firewall rules applied
+- [ ] Secrets are not stored in code
+- [ ] Backup and disaster recovery configured
+- [ ] Security monitoring active
+- [ ] Rate limiting configured
+- [ ] CORS policies applied
 
-## 🚨 Инциденты безопасности
+## 🚨 Security Incidents
 
-### Планы реагирования
+### Response Plans
 
-1. **Немедленные действия** (0-1 час)
+1. **Immediate Actions** (0-1 hour)
 
-   - Изоляция пораженных систем
-   - Оценка масштаба инцидента
-   - Уведомление команды безопасности
+   - Isolation of affected systems
+   - Incident scale assessment
+   - Security team notification
 
-2. **Короткосрочные меры** (1-24 часа)
+2. **Short-term Measures** (1-24 hours)
 
-   - Применение временных исправлений
-   - Сбор доказательств
-   - Уведомление заинтересованных сторон
+   - Application of temporary fixes
+   - Evidence collection
+   - Stakeholder notification
 
-3. **Долгосрочное восстановление** (1-7 дней)
-   - Постоянные исправления
-   - Анализ первопричин
-   - Обновление процедур
+3. **Long-term Recovery** (1-7 days)
+   - Permanent fixes
+   - Root cause analysis
+   - Procedure updates
 
-## 📚 Дополнительные ресурсы
+## 📚 Additional Resources
 
-### Стандарты и руководства
+### Standards and Guides
 
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
 - [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework)
 - [CWE Top 25](https://cwe.mitre.org/top25/)
 - [SANS Security Guidelines](https://www.sans.org/white-papers/)
 
-### Инструменты для тестирования
+### Testing Tools
 
 - **SAST**: SonarQube, CodeQL, Semgrep
 - **DAST**: OWASP ZAP, Burp Suite
 - **Container Security**: Trivy, Clair, Snyk
 - **Dependency Check**: NPM Audit, Go mod tidy
 
-## 🤝 Сотрудничество
+## 🤝 Collaboration
 
-Мы приветствуем участие сообщества в улучшении безопасности проекта:
+We welcome community participation in improving project security:
 
-- **Bug Bounty**: Рассматриваем внедрение программы
-- **Security Reviews**: Приглашаем экспертов для аудита
-- **Community**: Обсуждения в security каналах
+- **Bug Bounty**: Considering implementation
+- **Security Reviews**: Experts invited for audit
+- **Community**: Discussions in security channels
 
 ---
 
-**Помните**: Безопасность - это непрерывный процесс, а не одноразовое действие. Регулярно обновляйте свои знания и следите за новыми угрозами.
+**Remember**: Security is a continuous process, not a one-time action. Regularly update your knowledge and monitor new threats.

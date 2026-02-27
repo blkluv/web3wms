@@ -1,34 +1,34 @@
-# Техническая спецификация проекта
+# Technical Specification
 
-## 📊 Общие сведения
+## 📊 General Information
 
-**Название проекта**: Система управления складом и отслеживания оборудования  
-**Тип проекта**: Дипломная работа - Полнофункциональная система управления  
-**Статус**: MVP готов к демонстрации  
-**Версия**: 1.0.0  
-**Дата создания**: Ноябрь 2024  
-**Последнее обновление**: Декабрь 2024
+**Project Name**: Warehouse Management and Equipment Tracking System
+**Project Type**: Diploma Thesis - Full-Stack Management System
+**Status**: MVP Ready for Demonstration
+**Version**: 1.0.0
+**Created Date**: November 2024
+**Last Updated**: December 2024
 
-## 🎯 Цели и задачи проекта
+## 🎯 Project Goals and Objectives
 
-### Основная цель
+### Primary Goal
 
-Разработка современной системы управления складскими операциями с интеграцией блокчейн технологий для обеспечения прозрачности и неизменности записей о движении оборудования.
+Development of a modern warehouse operations management system with blockchain integration to ensure transparency and immutability of equipment movement records.
 
-### Задачи
+### Objectives
 
-1. **Автоматизация складских процессов** - учет поступления, расходования и инвентаризации
-2. **Отслеживание оборудования** - полный жизненный цикл от закупки до списания
-3. **Blockchain интеграция** - неизменяемый журнал передач между сотрудниками
-4. **Ролевая модель доступа** - разграничение прав доступа по ролям пользователей
-5. **Система уведомлений** - информирование о критических событиях
-6. **Отчетность и аналитика** - предоставление данных для принятия решений
+1. **Warehouse Process Automation** - tracking of receipts, expenditures, and inventory.
+2. **Equipment Tracking** - full lifecycle management from purchase to disposal.
+3. **Blockchain Integration** - immutable log of transfers between employees.
+4. **Role-Based Access Control** - access rights differentiation based on user roles.
+5. **Notification System** - informing users about critical events.
+6. **Reporting and Analytics** - providing data for decision-making.
 
-## 🏛️ Архитектура системы
+## 🏛️ System Architecture
 
-### Архитектурный подход
+### Architectural Approach
 
-**Микросервисная архитектура** с разделением ответственности между сервисами:
+**Microservices Architecture** with separation of concerns between services:
 
 ```
 ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
@@ -61,208 +61,208 @@
 └─────────────┘
 ```
 
-### Принципы архитектуры
+### Architecture Principles
 
-- **Single Responsibility** - каждый сервис выполняет одну функцию
-- **Loose Coupling** - слабая связанность между сервисами
-- **High Cohesion** - высокая связность внутри сервисов
-- **Scalability** - возможность масштабирования отдельных компонентов
-- **Fault Tolerance** - отказоустойчивость системы
-- **Security by Design** - безопасность на всех уровнях
+- **Single Responsibility** - each service performs one function.
+- **Loose Coupling** - weak dependency between services.
+- **High Cohesion** - high cohesion within services.
+- **Scalability** - ability to scale individual components.
+- **Fault Tolerance** - system resilience to failures.
+- **Security by Design** - security at all levels.
 
-## 📦 Компоненты системы
+## 📦 System Components
 
 ### Frontend (Next.js 15)
 
-**Технологии**: Next.js 15, React 19, TypeScript 5, Mantine UI 8, Tailwind CSS 4
+**Technologies**: Next.js 15, React 19, TypeScript 5, Mantine UI 8, Tailwind CSS 4
 
-**Ключевые особенности**:
+**Key Features**:
 
-- App Router для оптимальной производительности
-- Server-Side Rendering для SEO оптимизации
-- Static Generation для статических страниц
-- Redux Toolkit для управления состоянием
-- React Query для кэширования API данных
-- Адаптивный дизайн для всех устройств
+- App Router for optimal performance
+- Server-Side Rendering for SEO optimization
+- Static Generation for static pages
+- Redux Toolkit for state management
+- React Query for API data caching
+- Responsive design for all devices
 
-**Страницы и функциональность**:
+**Pages and Functionality**:
 
-- 🏠 **Dashboard** - метрики, аналитика, обзор системы
-- 🔐 **Аутентификация** - вход/выход, управление сессиями
-- 📦 **Управление складом** - CRUD товаров, инвентаризация
-- 🔗 **Отслеживание оборудования** - передачи, blockchain записи
-- 📋 **Накладные** - создание, утверждение, печать документов
-- 👥 **Управление пользователями** - администрирование ролей
-- 📊 **Отчеты** - аналитика, экспорт данных
+- 🏠 **Dashboard** - metrics, analytics, system overview
+- 🔐 **Authentication** - login/logout, session management
+- 📦 **Warehouse Management** - item CRUD, inventory
+- 🔗 **Equipment Tracking** - transfers, blockchain records
+- 📋 **Invoices** - creation, approval, document printing
+- 👥 **User Management** - role administration
+- 📊 **Reports** - analytics, data export
 
 ### Backend Services
 
 #### 🔐 Auth Service (Go)
 
-**Назначение**: Централизованная аутентификация и авторизация
+**Purpose**: Centralized authentication and authorization
 
-**Функциональность**:
+**Functionality**:
 
-- JWT токены с автоматическим обновлением
-- Ролевая модель (Admin, Manager, Operator, Viewer)
-- Автогенерация Ethereum адресов для пользователей
-- Аудит действий пользователей
-- Password hashing с bcrypt
+- JWT tokens with automatic refresh
+- Role model (Admin, Manager, Operator, Viewer)
+- Auto-generation of Ethereum addresses for users
+- User action audit
+- Password hashing with bcrypt
 - Session management
 
-**База данных**: `warehouse_auth` (3 коллекции)
+**Database**: `warehouse_auth` (3 collections)
 
-- `users` - пользователи системы
-- `audit_logs` - журнал действий
-- `system_settings` - настройки системы
+- `users` - system users
+- `audit_logs` - action log
+- `system_settings` - system settings
 
 #### 📦 Warehouse Service (Go)
 
-**Назначение**: Управление складскими операциями
+**Purpose**: Management of warehouse operations
 
-**Функциональность**:
+**Functionality**:
 
-- CRUD операции для товаров склада
-- Система накладных (приходные/расходные)
-- Категории и справочники товаров
-- Автоматический расчет остатков
-- Уведомления о критических остатках
-- Интеграция с RabbitMQ
+- CRUD operations for warehouse items
+- Invoice system (incoming/outgoing)
+- Categories and item references
+- Automated stock calculation
+- Critical stock notifications
+- RabbitMQ integration
 
-**База данных**: `warehouse_inventory` (6 коллекций)
+**Database**: `warehouse_inventory` (6 collections)
 
-- `warehouseitems` - каталог товаров
-- `inventorytransactions` - история операций
-- `invoices` - накладные
-- `categories` - категории товаров
-- `warehouses` - справочник складов
-- `suppliers` - поставщики
+- `warehouseitems` - item catalog
+- `inventorytransactions` - operation history
+- `invoices` - invoices
+- `categories` - item categories
+- `warehouses` - warehouse reference
+- `suppliers` - suppliers
 
 #### 🔗 Tracking Service (Node.js/Express)
 
-**Назначение**: Отслеживание оборудования с blockchain интеграцией
+**Purpose**: Equipment tracking with blockchain integration
 
-**Функциональность**:
+**Functionality**:
 
-- Регистрация оборудования в блокчейн
-- Передачи между пользователями
-- Смарт-контракты Ethereum
-- QR-коды для идентификации
-- График обслуживания
-- Web3.js интеграция
+- Equipment registration in blockchain
+- Transfers between users
+- Ethereum smart contracts
+- QR codes for identification
+- Maintenance schedule
+- Web3.js integration
 
-**База данных**: `warehouse_tracking` (3 коллекции)
+**Database**: `warehouse_tracking` (3 collections)
 
-- `equipments` - реестр оборудования
-- `transfers` - история передач
-- `maintenance_schedules` - график обслуживания
+- `equipments` - equipment registry
+- `transfers` - transfer history
+- `maintenance_schedules` - maintenance schedule
 
 #### 🔔 Notification Service (Go)
 
-**Назначение**: Система уведомлений в реальном времени
+**Purpose**: Real-time notification system
 
-**Функциональность**:
+**Functionality**:
 
-- Real-time уведомления
-- Различные типы уведомлений
-- Email integration (готовность)
+- Real-time notifications
+- Various notification types
+- Email integration (ready)
 - Push notifications
 - RabbitMQ consumer/producer
 
 #### 📊 Analytics Service (Go)
 
-**Назначение**: Аналитика и отчетность (базовая реализация)
+**Purpose**: Analytics and reporting (basic implementation)
 
-**Функциональность**:
+**Functionality**:
 
-- Сбор метрик системы
-- Генерация отчетов
-- Дашборд аналитики
-- Экспорт данных
+- System metrics collection
+- Report generation
+- Analytics dashboard
+- Data export
 
-### Инфраструктурные компоненты
+### Infrastructure Components
 
 #### 🗄️ MongoDB
 
-**Версия**: 7.0
-**Конфигурация**: Standalone instance для MVP
-**Базы данных**: 3 отдельные БД для изоляции данных
+**Version**: 7.0
+**Configuration**: Standalone instance for MVP
+**Databases**: 3 separate DBs for data isolation
 
-**Особенности**:
+**Features**:
 
-- Индексы для оптимизации запросов
-- Валидация схем данных
-- Автоматические timestamps
+- Indexes for query optimization
+- Data schema validation
+- Automatic timestamps
 - Connection pooling
 - Health checks
 
 #### 🐰 RabbitMQ
 
-**Версия**: 3.12
-**Назначение**: Асинхронная коммуникация между сервисами
+**Version**: 3.12
+**Purpose**: Asynchronous communication between services
 
-**Очереди**:
+**Queues**:
 
-- `inventory.notifications` - уведомления склада
-- `equipment.transfers` - передачи оборудования
-- `maintenance.alerts` - обслуживание
-- `system.audit` - аудит системы
+- `inventory.notifications` - warehouse notifications
+- `equipment.transfers` - equipment transfers
+- `maintenance.alerts` - maintenance
+- `system.audit` - system audit
 
 #### ⛓️ Ethereum Blockchain
 
-**Сеть**: Ganache (локальная разработка)
-**Назначение**: Неизменяемый журнал передач оборудования
+**Network**: Ganache (local development)
+**Purpose**: Immutable log of equipment transfers
 
-**Смарт-контракты**:
+**Smart Contracts**:
 
-- `EquipmentTracking.sol` - основной контракт отслеживания
-- Events для логирования передач
-- Access control для безопасности
+- `EquipmentTracking.sol` - main tracking contract
+- Events for transfer logging
+- Access control for security
 
-## 🛠️ Технологический стек
+## 🛠️ Technology Stack
 
 ### Backend
 
-| Технология         | Версия | Назначение           |
-| ------------------ | ------ | -------------------- |
-| **Go**             | 1.21+  | Backend микросервисы |
-| **Gin**            | 1.9    | HTTP web framework   |
-| **MongoDB Driver** | 1.12   | База данных          |
-| **JWT-Go**         | 4.5    | JWT токены           |
-| **Bcrypt**         | latest | Хеширование паролей  |
-| **Validator**      | 10.15  | Валидация данных     |
-| **AMQP**           | 1.9    | RabbitMQ интеграция  |
+| Technology         | Version | Purpose              |
+| ------------------ | ------- | -------------------- |
+| **Go**             | 1.21+   | Backend microservices|
+| **Gin**            | 1.9     | HTTP web framework   |
+| **MongoDB Driver** | 1.12    | Database             |
+| **JWT-Go**         | 4.5     | JWT tokens           |
+| **Bcrypt**         | latest  | Password hashing     |
+| **Validator**      | 10.15   | Data validation      |
+| **AMQP**           | 1.9     | RabbitMQ integration |
 
 ### Frontend
 
-| Технология        | Версия | Назначение            |
-| ----------------- | ------ | --------------------- |
-| **Next.js**       | 15.0   | React фреймворк       |
-| **React**         | 19.0   | UI библиотека         |
-| **TypeScript**    | 5.0    | Статическая типизация |
-| **Mantine**       | 8.0    | UI компоненты         |
-| **Tailwind CSS**  | 4.0    | CSS фреймворк         |
-| **Redux Toolkit** | 2.8    | Управление состоянием |
-| **React Query**   | 5.76   | Серверное состояние   |
-| **Axios**         | 1.9    | HTTP клиент           |
+| Technology        | Version | Purpose               |
+| ----------------- | ------- | --------------------- |
+| **Next.js**       | 15.0    | React framework       |
+| **React**         | 19.0    | UI library            |
+| **TypeScript**    | 5.0     | Static typing         |
+| **Mantine**       | 8.0     | UI components         |
+| **Tailwind CSS**  | 4.0     | CSS framework         |
+| **Redux Toolkit** | 2.8     | State management      |
+| **React Query**   | 5.76    | Server state          |
+| **Axios**         | 1.9     | HTTP client           |
 
 ### DevOps & Tools
 
-| Технология         | Версия | Назначение       |
-| ------------------ | ------ | ---------------- |
-| **Docker**         | 20.10+ | Контейнеризация  |
-| **Docker Compose** | 2.0+   | Оркестрация      |
-| **MongoDB**        | 7.0    | База данных      |
-| **RabbitMQ**       | 3.12   | Message broker   |
-| **Ganache**        | 7.9    | Ethereum тестнет |
-| **Swagger**        | 3.0    | API документация |
+| Technology         | Version | Purpose          |
+| ------------------ | ------- | ---------------- |
+| **Docker**         | 20.10+  | Containerization |
+| **Docker Compose** | 2.0+    | Orchestration    |
+| **MongoDB**        | 7.0     | Database         |
+| **RabbitMQ**       | 3.12    | Message broker   |
+| **Ganache**        | 7.9     | Ethereum testnet |
+| **Swagger**        | 3.0     | API documentation|
 
-## 📊 Метрики проекта
+## 📊 Project Metrics
 
-### Размер кодовой базы
+### Codebase Size
 
 ```
-Сервис               Файлы    Строки кода    Языки
+Service              Files    Lines of Code    Languages
 ─────────────────────────────────────────────────────
 Frontend             120+     ~8,000        TS/TSX/CSS
 Auth Service         8        ~1,200        Go
@@ -270,93 +270,93 @@ Warehouse Service    9        ~1,500        Go
 Tracking Service     25+      ~2,000        JS/Sol
 Notification Service 6        ~800          Go
 Analytics Service    4        ~400          Go
-Документация         8        ~5,000        Markdown
+Documentation        8        ~5,000        Markdown
 Docker & Scripts     15+      ~500          YAML/Shell
 ─────────────────────────────────────────────────────
-Итого               195+      ~19,400       7 языков
+Total               195+      ~19,400       7 languages
 ```
 
-### Покрытие функциональности
+### Functional Coverage
 
-- ✅ **Аутентификация**: 100% - Полная реализация с JWT
-- ✅ **Управление складом**: 95% - Основной функционал + накладные
-- ✅ **Отслеживание**: 90% - Blockchain интеграция + QR коды
-- ✅ **Уведомления**: 85% - Real-time + типы уведомлений
-- ✅ **Frontend UI**: 95% - Все основные страницы
-- 🔄 **Аналитика**: 30% - Базовая структура
-- ✅ **API документация**: 100% - Swagger для всех сервисов
-- ✅ **Контейнеризация**: 100% - Docker Compose готов
+- ✅ **Authentication**: 100% - Full implementation with JWT
+- ✅ **Warehouse Management**: 95% - Main functionality + invoices
+- ✅ **Tracking**: 90% - Blockchain integration + QR codes
+- ✅ **Notifications**: 85% - Real-time + notification types
+- ✅ **Frontend UI**: 95% - All main pages
+- 🔄 **Analytics**: 30% - Basic structure
+- ✅ **API Documentation**: 100% - Swagger for all services
+- ✅ **Containerization**: 100% - Docker Compose ready
 
-### База данных
+### Database
 
-- **Коллекций**: 12 (100% реализованы)
-- **Индексов**: 25+ для оптимизации
-- **Демо-данных**: 500+ записей для тестирования
-- **Схемы валидации**: Полное покрытие
+- **Collections**: 12 (100% implemented)
+- **Indexes**: 25+ for optimization
+- **Demo Data**: 500+ records for testing
+- **Validation Schemas**: Full coverage
 
-## 🔒 Безопасность
+## 🔒 Security
 
-### Аутентификация и авторизация
+### Authentication and Authorization
 
-- **JWT токены** с коротким временем жизни (15 мин)
-- **Refresh токены** для автоматического обновления (7 дней)
-- **Ролевая модель** с 4 уровнями доступа
-- **Middleware авторизации** на всех защищенных endpoints
+- **JWT tokens** with short lifetime (15 min)
+- **Refresh tokens** for automatic renewal (7 days)
+- **Role-based model** with 4 access levels
+- **Authorization middleware** on all protected endpoints
 
-### Защита данных
+### Data Protection
 
-- **Bcrypt hashing** для паролей (cost 12)
-- **Input validation** на всех уровнях
-- **SQL/NoSQL injection** защита через prepared statements
-- **XSS protection** через санитизацию данных
-- **CORS настройки** для frontend-backend коммуникации
+- **Bcrypt hashing** for passwords (cost 12)
+- **Input validation** at all levels
+- **SQL/NoSQL injection** protection via prepared statements
+- **XSS protection** via data sanitization
+- **CORS settings** for frontend-backend communication
 
-### Аудит и мониторинг
+### Audit and Monitoring
 
-- **Audit logging** всех критических операций
-- **Error handling** с structured logging
-- **Health checks** для всех сервисов
-- **Rate limiting** (готовность к имплементации)
+- **Audit logging** of all critical operations
+- **Error handling** with structured logging
+- **Health checks** for all services
+- **Rate limiting** (ready for implementation)
 
-## 📈 Производительность
+## 📈 Performance
 
-### Оптимизации
+### Optimizations
 
-- **Database indexing** для быстрых запросов
-- **Connection pooling** для MongoDB
-- **React Query caching** для API данных
-- **Code splitting** в Next.js приложении
-- **Docker multi-stage builds** для оптимизации образов
+- **Database indexing** for fast queries
+- **Connection pooling** for MongoDB
+- **React Query caching** for API data
+- **Code splitting** in Next.js application
+- **Docker multi-stage builds** for image optimization
 
-### Метрики
+### Metrics
 
-- **API response time**: < 100ms для базовых операций
-- **Page load time**: < 2 секунды для всех страниц
-- **Docker startup**: < 3 минуты для полной системы
-- **Memory usage**: Оптимизировано для развертывания
+- **API response time**: < 100ms for basic operations
+- **Page load time**: < 2 seconds for all pages
+- **Docker startup**: < 3 minutes for full system
+- **Memory usage**: Optimized for deployment
 
-## 🧪 Тестирование
+## 🧪 Testing
 
-### Покрытие тестами
+### Test Coverage
 
-- **Unit тесты**: Критичные функции backend
-- **Integration тесты**: API endpoints
-- **API тесты**: Автоматизированные скрипты
-- **Manual тесты**: UI flows и пользовательские сценарии
+- **Unit tests**: Critical backend functions
+- **Integration tests**: API endpoints
+- **API tests**: Automated scripts
+- **Manual tests**: UI flows and user scenarios
 
-### Инструменты тестирования
+### Testing Tools
 
-- **Go testing**: Встроенный testing пакет
-- **Jest**: Для JavaScript/TypeScript тестов
-- **Postman-like scripts**: Для API тестирования
-- **Docker health checks**: Для infrastructure тестирования
+- **Go testing**: Built-in testing package
+- **Jest**: For JavaScript/TypeScript tests
+- **Postman-like scripts**: For API testing
+- **Docker health checks**: For infrastructure testing
 
-## 📦 Развертывание
+## 📦 Deployment
 
-### Контейнеризация
+### Containerization
 
 ```yaml
-# Docker Compose включает:
+# Docker Compose includes:
 services:
   - frontend (Next.js)
   - auth-service (Go)
@@ -368,130 +368,130 @@ services:
   - ethereum-node (Ganache)
 ```
 
-### Скрипты автоматизации
+### Automation Scripts
 
-- `start-system.sh` - Полный запуск системы
-- `clean-and-rebuild.sh` - Пересборка всех компонентов
-- `check-status.sh` - Мониторинг состояния
-- `demo-data-setup.sh` - Загрузка тестовых данных
+- `start-system.sh` - Full system startup
+- `clean-and-rebuild.sh` - Rebuild all components
+- `check-status.sh` - Status monitoring
+- `demo-data-setup.sh` - Load test data
 
 ### Environment Management
 
 - **Development**: Local Docker Compose
-- **Production Ready**: Environment variables для конфигурации
-- **Scalability**: Готовность к Kubernetes деплою
+- **Production Ready**: Environment variables for configuration
+- **Scalability**: Readiness for Kubernetes deployment
 
-## 📚 Документация
+## 📚 Documentation
 
-### Типы документации
+### Documentation Types
 
-1. **README.md** - Обзор проекта и быстрый старт
-2. **INSTALLATION.md** - Детальное руководство по установке
-3. **API_REFERENCE.md** - Полная API документация
-4. **Architecture Documentation** - Техническая архитектура
-5. **Frontend Architecture** - Детали frontend реализации
-6. **CONTRIBUTING.md** - Руководство для разработчиков
-7. **SECURITY.md** - Политики безопасности
-8. **CHANGELOG.md** - История изменений
+1. **README.md** - Project overview and quick start
+2. **INSTALLATION.md** - Detailed installation guide
+3. **API_REFERENCE.md** - Full API documentation
+4. **Architecture Documentation** - Technical architecture
+5. **Frontend Architecture** - Frontend implementation details
+6. **CONTRIBUTING.md** - Guide for developers
+7. **SECURITY.md** - Security policies
+8. **CHANGELOG.md** - Change history
 
-### API документация
+### API Documentation
 
-- **Swagger UI** для всех backend сервисов
-- **OpenAPI 3.0** спецификации
-- **Postman коллекции** для тестирования
-- **Code examples** для интеграции
+- **Swagger UI** for all backend services
+- **OpenAPI 3.0** specifications
+- **Postman collections** for testing
+- **Code examples** for integration
 
-## 🎯 Демонстрационные возможности
+## 🎯 Demonstration Capabilities
 
-### Готовые сценарии для демонстрации
+### Ready Scenarios for Demonstration
 
-#### Сценарий 1: Управление складом
+#### Scenario 1: Warehouse Management
 
-1. Вход в систему под ролью Manager
-2. Просмотр дашборда с метриками
-3. Добавление нового товара
-4. Создание приходной накладной
-5. Просмотр обновленных остатков
+1. Login as Manager
+2. View dashboard metrics
+3. Add new item
+4. Create incoming invoice
+5. View updated stock
 
-#### Сценарий 2: Отслеживание оборудования
+#### Scenario 2: Equipment Tracking
 
-1. Регистрация нового оборудования
-2. Передача оборудования между пользователями
-3. Просмотр записи в блокчейн
-4. Генерация QR-кода
-5. Планирование обслуживания
+1. Register new equipment
+2. Transfer equipment between users
+3. View blockchain record
+4. Generate QR code
+5. Schedule maintenance
 
-#### Сценарий 3: Система уведомлений
+#### Scenario 3: Notification System
 
-1. Настройка уведомлений о низких остатках
-2. Автоматическое уведомление при критическом уровне
-3. Уведомления о передачах оборудования
-4. Email уведомления (демонстрация готовности)
+1. Setup low stock notifications
+2. Automatic notification on critical level
+3. Notifications on equipment transfers
+4. Email notifications (readiness demo)
 
-### Демо-данные
+### Demo Data
 
-- **10 пользователей** с разными ролями
-- **50+ единиц оборудования** различных категорий
-- **100+ складских операций**
-- **20+ накладных** разных типов
-- **15+ передач в блокчейн**
-- **Графики обслуживания**
+- **10 users** with different roles
+- **50+ equipment items** of various categories
+- **100+ warehouse transactions**
+- **20+ invoices** of different types
+- **15+ blockchain transfers**
+- **Maintenance schedules**
 
-## 🚀 Масштабируемость и развитие
+## 🚀 Scalability and Development
 
-### Архитектурная готовность
+### Architectural Readiness
 
-- **Микросервисная архитектура** позволяет независимое масштабирование
-- **API-first подход** упрощает интеграцию
-- **Stateless сервисы** поддерживают горизонтальное масштабирование
-- **Database per service** обеспечивает изоляцию данных
+- **Microservices architecture** allows independent scaling
+- **API-first approach** simplifies integration
+- **Stateless services** support horizontal scaling
+- **Database per service** ensures data isolation
 
-### Планы развития
+### Development Plans
 
-- **Kubernetes deployment** для production
-- **API Gateway** (Nginx/Traefik) для роутинга
-- **Elasticsearch** для продвинутого поиска
-- **Redis** для кэширования
+- **Kubernetes deployment** for production
+- **API Gateway** (Nginx/Traefik) for routing
+- **Elasticsearch** for advanced search
+- **Redis** for caching
 - **Monitoring stack** (Prometheus/Grafana)
 - **CI/CD pipeline** (GitHub Actions)
 
-## 💼 Бизнес-ценность
+## 💼 Business Value
 
-### Решаемые проблемы
+### Solved Problems
 
-1. **Ручной учет** → Автоматизированная система
-2. **Отсутствие трейсабилити** → Blockchain записи
-3. **Разрозненные данные** → Централизованная система
-4. **Медленная отчетность** → Real-time аналитика
-5. **Человеческие ошибки** → Автоматическая валидация
+1. **Manual accounting** → Automated system
+2. **Lack of traceability** → Blockchain records
+3. **Siloed data** → Centralized system
+4. **Slow reporting** → Real-time analytics
+5. **Human errors** → Automatic validation
 
-### Преимущества системы
+### System Benefits
 
-- **Повышение эффективности** складских операций
-- **Снижение потерь** оборудования и товаров
-- **Прозрачность операций** через блокчейн
-- **Быстрое принятие решений** на основе данных
-- **Соответствие требованиям** аудита и compliance
+- **Increased efficiency** of warehouse operations
+- **Reduced losses** of equipment and goods
+- **Transparency of operations** via blockchain
+- **Fast decision making** based on data
+- **Audit and compliance** adherence
 
-## 🏆 Достижения проекта
+## 🏆 Project Achievements
 
-### Технические достижения
+### Technical Achievements
 
-- ✅ **Полнофункциональная микросервисная архитектура**
-- ✅ **Интеграция blockchain технологий**
-- ✅ **Современный responsive frontend**
-- ✅ **Comprehensive API с документацией**
-- ✅ **Контейнеризация всей системы**
-- ✅ **Демонстрационные данные и сценарии**
+- ✅ **Full-stack microservices architecture**
+- ✅ **Blockchain technology integration**
+- ✅ **Modern responsive frontend**
+- ✅ **Comprehensive API with documentation**
+- ✅ **Full system containerization**
+- ✅ **Demo data and scenarios**
 
-### Образовательные результаты
+### Educational Outcomes
 
-- **Практика современных технологий** - Go, Next.js, Blockchain
-- **Архитектурное мышление** - проектирование сложных систем
-- **DevOps навыки** - Docker, автоматизация развертывания
-- **Полный цикл разработки** - от концепции до deployment
-- **Документирование** - техническая документация проекта
+- **Practice of modern technologies** - Go, Next.js, Blockchain
+- **Architectural thinking** - designing complex systems
+- **DevOps skills** - Docker, deployment automation
+- **Full development cycle** - from concept to deployment
+- **Documentation** - technical project documentation
 
 ---
 
-**Заключение**: Проект демонстрирует создание полнофункциональной enterprise-level системы с использованием современных технологий и архитектурных подходов. Система готова к демонстрации, дальнейшему развитию и потенциальному коммерческому использованию.
+**Conclusion**: The project demonstrates the creation of a full-stack enterprise-level system using modern technologies and architectural approaches. The system is ready for demonstration, further development, and potential commercial use.
