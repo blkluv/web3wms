@@ -1,89 +1,91 @@
 # Tracking Service Express
 
-Сервис для отслеживания оборудования с интеграцией блокчейн на Express.js.
+Equipment tracking service with blockchain integration using Express.js.
 
-## Возможности
+[Читать на русском](README.ru.md)
 
-- Регистрация и управление оборудованием
-- Отслеживание передач оборудования между сотрудниками
-- Интеграция с блокчейном Ethereum для надежного хранения истории передач
-- RESTful API для взаимодействия с другими сервисами
+## Features
 
-## Установка и запуск
+- Equipment registration and management
+- Tracking equipment transfers between employees
+- Integration with Ethereum blockchain for reliable transfer history storage
+- RESTful API for interaction with other services
 
-### Предварительные требования
+## Installation and Launch
+
+### Prerequisites
 
 - Node.js v14+
 - MongoDB
-- Ethereum-совместимая сеть (опционально)
+- Ethereum-compatible network (optional)
 
-### Установка
+### Installation
 
-1. Клонировать репозиторий
-2. Установить зависимости:
+1. Clone repository
+2. Install dependencies:
    ```
    npm install
    ```
-3. Создать файл `.env` на основе `.env.example`
-4. Запустить сервис:
+3. Create `.env` file based on `.env.example`
+4. Start the service:
    ```
    npm start
    ```
-   Или в режиме разработки:
+   Or in development mode:
    ```
    npm run dev
    ```
 
 ## API
 
-Сервис предоставляет API для управления оборудованием и его передачами:
+The service provides an API for managing equipment and its transfers:
 
-### Регистрация и управление оборудованием
+### Equipment Registration and Management
 
-- `POST /equipment` - Регистрация нового оборудования
-- `GET /equipment/:id` - Получение информации об оборудовании
-- `GET /equipment` - Список оборудования (с фильтрацией)
-- `PUT /equipment/:id` - Обновление информации об оборудовании
-- `DELETE /equipment/:id` - Удаление оборудования
+- `POST /equipment` - Register new equipment
+- `GET /equipment/:id` - Get equipment information
+- `GET /equipment` - Equipment list (with filtering)
+- `PUT /equipment/:id` - Update equipment information
+- `DELETE /equipment/:id` - Delete equipment
 
-### Передача оборудования
+### Equipment Transfer
 
-- `POST /transfer` - Передача оборудования
-- `GET /transfer/history/:equipment_id` - История передач оборудования
+- `POST /transfer` - Transfer equipment
+- `GET /transfer/history/:equipment_id` - Equipment transfer history
 
-### Блокчейн-интеграция
+### Blockchain Integration
 
-- `GET /blockchain/history/:equipment_id` - История передач оборудования из блокчейна
-- `POST /blockchain/register` - Регистрация существующего оборудования в блокчейне
+- `GET /blockchain/history/:equipment_id` - Equipment transfer history from blockchain
+- `POST /blockchain/register` - Register existing equipment in blockchain
 
-### Статус сервиса
+### Service Status
 
-- `GET /ping` - Проверка доступности сервиса
-- `GET /operations/recent` - Получение последних операций
+- `GET /ping` - Check service availability
+- `GET /operations/recent` - Get recent operations
 
-## Интеграция с блокчейном
+## Blockchain Integration
 
-Для использования блокчейн-интеграции необходимо:
+To use blockchain integration:
 
-1. Развернуть смарт-контракт `EquipmentTracking.sol` в сети Ethereum
-2. Положить ABI контракта в директорию `/contracts`
-3. Указать адрес контракта и приватный ключ в `.env`
+1. Deploy `EquipmentTracking.sol` smart contract to Ethereum network
+2. Place contract ABI in `/contracts` directory
+3. Specify contract address and private key in `.env`
 
-## Структура проекта
+## Project Structure
 
 ```
 tracking-service-express/
-├── config/                  # Конфигурационные файлы
-│   ├── db.js                # Настройки подключения к MongoDB
-│   └── blockchain.js        # Настройки подключения к Ethereum
-├── controllers/             # Контроллеры для обработки запросов
-├── middleware/              # Middlewares для Express
-├── models/                  # Mongoose модели
-├── routes/                  # Маршруты API
-├── services/                # Бизнес-логика
-├── utils/                   # Утилиты
-├── contracts/               # Папка для ABI и контрактов Ethereum
-├── app.js                   # Основной файл приложения
-├── server.js                # Файл для запуска сервера
-└── package.json             # Зависимости и скрипты
+├── config/                  # Configuration files
+│   ├── db.js                # MongoDB connection settings
+│   └── blockchain.js        # Ethereum connection settings
+├── controllers/             # Request handling controllers
+├── middleware/              # Express middlewares
+├── models/                  # Mongoose models
+├── routes/                  # API routes
+├── services/                # Business logic
+├── utils/                   # Utilities
+├── contracts/               # Directory for ABI and Ethereum contracts
+├── app.js                   # Main application file
+├── server.js                # Server startup file
+└── package.json             # Dependencies and scripts
 ```

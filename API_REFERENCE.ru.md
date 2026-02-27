@@ -1,41 +1,41 @@
-# API Reference
+# API Референс
 
-Full API documentation for all microservices of the warehouse management and equipment tracking system.
+Полная документация API для всех микросервисов системы управления складом и отслеживания оборудования.
 
-## 📋 General Information
+## 📋 Общие сведения
 
-### Base URLs
+### Базовые URL
 
-| Service              | URL                     | Port |
+| Сервис               | URL                     | Порт |
 | -------------------- | ----------------------- | ---- |
 | Auth Service         | `http://localhost:8000` | 8000 |
 | Warehouse Service    | `http://localhost:8001` | 8001 |
 | Tracking Service     | `http://localhost:8002` | 8002 |
 | Notification Service | `http://localhost:8003` | 8003 |
 
-### Authentication
+### Аутентификация
 
-All protected endpoints require a JWT token in the header:
+Все защищенные endpoints требуют JWT токен в заголовке:
 
 ```http
 Authorization: Bearer <jwt_token>
 ```
 
-### Common Response Formats
+### Общие форматы ответов
 
-#### Success Response
+#### Успешный ответ
 
 ```json
 {
   "success": true,
   "data": {
-    // Response data
+    // Данные ответа
   },
   "message": "Operation completed successfully"
 }
 ```
 
-#### Error Response
+#### Ошибка
 
 ```json
 {
@@ -48,15 +48,15 @@ Authorization: Bearer <jwt_token>
 }
 ```
 
-### HTTP Status Codes
+### Коды состояния HTTP
 
-- `200 OK` - Successful request
-- `201 Created` - Resource created
-- `400 Bad Request` - Bad request
-- `401 Unauthorized` - Authentication required
-- `403 Forbidden` - Insufficient permissions
-- `404 Not Found` - Resource not found
-- `500 Internal Server Error` - Internal server error
+- `200 OK` - Успешный запрос
+- `201 Created` - Ресурс создан
+- `400 Bad Request` - Ошибка в запросе
+- `401 Unauthorized` - Требуется аутентификация
+- `403 Forbidden` - Недостаточно прав
+- `404 Not Found` - Ресурс не найден
+- `500 Internal Server Error` - Внутренняя ошибка сервера
 
 ## 🔐 Auth Service API
 
@@ -64,9 +64,9 @@ Authorization: Bearer <jwt_token>
 
 #### POST /login
 
-User authentication
+Аутентификация пользователя
 
-**Request:**
+**Запрос:**
 
 ```json
 {
@@ -75,7 +75,7 @@ User authentication
 }
 ```
 
-**Response:**
+**Ответ:**
 
 ```json
 {
@@ -96,9 +96,9 @@ User authentication
 
 #### POST /signup
 
-Register a new user
+Регистрация нового пользователя
 
-**Request:**
+**Запрос:**
 
 ```json
 {
@@ -114,15 +114,15 @@ Register a new user
 
 #### GET /profile
 
-Get current user profile
+Получение профиля текущего пользователя
 
-**Headers:**
+**Заголовки:**
 
 ```http
 Authorization: Bearer <jwt_token>
 ```
 
-**Response:**
+**Ответ:**
 
 ```json
 {
@@ -144,15 +144,15 @@ Authorization: Bearer <jwt_token>
 
 #### GET /users
 
-Get list of all users (admin only)
+Получение списка всех пользователей (только для админов)
 
-**Query Parameters:**
+**Query параметры:**
 
-- `page` (int) - Page number (default: 1)
-- `limit` (int) - Items per page (default: 10)
-- `role` (string) - Filter by role
+- `page` (int) - Номер страницы (по умолчанию: 1)
+- `limit` (int) - Количество на странице (по умолчанию: 10)
+- `role` (string) - Фильтр по роли
 
-**Response:**
+**Ответ:**
 
 ```json
 {
@@ -171,15 +171,15 @@ Get list of all users (admin only)
 
 #### PUT /users/:id
 
-Update user
+Обновление пользователя
 
 #### DELETE /users/:id
 
-Delete user
+Удаление пользователя
 
 #### POST /refresh
 
-Refresh JWT token
+Обновление JWT токена
 
 ---
 
@@ -189,17 +189,17 @@ Refresh JWT token
 
 #### GET /items
 
-Get list of warehouse items
+Получение списка товаров склада
 
-**Query Parameters:**
+**Query параметры:**
 
-- `page` (int) - Page number
-- `limit` (int) - Items per page
-- `category` (string) - Filter by category
-- `status` (string) - Filter by status
-- `search` (string) - Search by name or serial number
+- `page` (int) - Номер страницы
+- `limit` (int) - Количество на странице
+- `category` (string) - Фильтр по категории
+- `status` (string) - Фильтр по статусу
+- `search` (string) - Поиск по названию или серийному номеру
 
-**Response:**
+**Ответ:**
 
 ```json
 {
@@ -208,15 +208,15 @@ Get list of warehouse items
     "items": [
       {
         "id": "507f1f77bcf86cd799439012",
-        "name": "Dell XPS 13 Laptop",
+        "name": "Ноутбук Dell XPS 13",
         "serial_number": "DLL-XPS-13-2024-001",
         "category": "computers",
-        "description": "13-inch ultrabook",
+        "description": "13-дюймовый ультрабук",
         "manufacturer": "Dell Inc.",
         "price": 125000.5,
         "quantity": 15,
         "min_quantity": 3,
-        "location": "Warehouse A-1, Rack 2-3",
+        "location": "Склад А-1, Стеллаж 2-3",
         "status": "available",
         "created_at": "2024-03-15T14:30:00Z"
       }
@@ -233,37 +233,37 @@ Get list of warehouse items
 
 #### POST /items
 
-Add new item
+Добавление нового товара
 
-**Request:**
+**Запрос:**
 
 ```json
 {
-  "name": "HP LaserJet Pro Printer",
+  "name": "Принтер HP LaserJet Pro",
   "serial_number": "HP-LJ-PRO-2024-001",
   "category": "printers",
-  "description": "Monochrome laser printer",
+  "description": "Монохромный лазерный принтер",
   "manufacturer": "HP Inc.",
   "price": 35000.0,
   "quantity": 5,
   "min_quantity": 2,
-  "location": "Warehouse A-2, Rack 1-1"
+  "location": "Склад А-2, Стеллаж 1-1"
 }
 ```
 
 #### PUT /items/:id
 
-Update item
+Обновление товара
 
 #### DELETE /items/:id
 
-Delete item
+Удаление товара
 
 #### GET /transactions
 
-Warehouse transaction history
+История транзакций склада
 
-**Response:**
+**Ответ:**
 
 ```json
 {
@@ -276,7 +276,7 @@ Warehouse transaction history
         "transaction_type": "intake",
         "quantity": 5,
         "responsible_user": "admin",
-        "reason": "New equipment purchase",
+        "reason": "Закупка нового оборудования",
         "date": "2024-03-15T14:30:00Z"
       }
     ]
@@ -286,13 +286,13 @@ Warehouse transaction history
 
 #### POST /transactions
 
-Create new transaction
+Создание новой транзакции
 
 #### GET /invoices
 
-List of invoices
+Список накладных
 
-**Response:**
+**Ответ:**
 
 ```json
 {
@@ -303,7 +303,7 @@ List of invoices
         "id": "507f1f77bcf86cd799439014",
         "invoice_number": "INV-2024-001",
         "type": "incoming",
-        "supplier": "TechSupply LLC",
+        "supplier": "ООО ТехПоставка",
         "total_amount": 250000.0,
         "status": "approved",
         "items": [
@@ -323,15 +323,15 @@ List of invoices
 
 #### POST /invoices
 
-Create new invoice
+Создание новой накладной
 
 #### GET /categories
 
-List of categories
+Список категорий товаров
 
 #### POST /categories
 
-Create new category
+Создание новой категории
 
 ---
 
@@ -341,9 +341,9 @@ Create new category
 
 #### GET /equipment
 
-List of equipment
+Список оборудования
 
-**Response:**
+**Ответ:**
 
 ```json
 {
@@ -351,13 +351,13 @@ List of equipment
   "data": [
     {
       "_id": "507f1f77bcf86cd799439015",
-      "name": "Dell XPS 15 Laptop",
+      "name": "Ноутбук Dell XPS 15",
       "serial_number": "DLL-XPS-15-2024-001",
       "category": "laptop",
       "current_owner": "admin",
       "status": "active",
       "blockchain_id": "0x1234567890abcdef",
-      "location": "IT Dept Office",
+      "location": "Офис IT отдела",
       "purchase_date": "2024-01-15T00:00:00Z",
       "warranty_expiry": "2027-01-15T00:00:00Z",
       "created_at": "2024-01-15T12:00:00Z"
@@ -368,16 +368,16 @@ List of equipment
 
 #### POST /equipment
 
-Add new equipment
+Добавление нового оборудования
 
-**Request:**
+**Запрос:**
 
 ```json
 {
   "name": "MacBook Pro 16",
   "serial_number": "MBP-16-2024-001",
   "category": "laptop",
-  "description": "Developer laptop",
+  "description": "Ноутбук для разработки",
   "initial_owner": "developer1",
   "purchase_price": 280000.0,
   "warranty_months": 36
@@ -386,21 +386,21 @@ Add new equipment
 
 #### GET /equipment/:id
 
-Get equipment info
+Получение информации об оборудовании
 
 #### PUT /equipment/:id
 
-Update equipment
+Обновление оборудования
 
 #### DELETE /equipment/:id
 
-Delete equipment
+Удаление оборудования
 
 #### GET /transfers
 
-Equipment transfer history
+История передач оборудования
 
-**Response:**
+**Ответ:**
 
 ```json
 {
@@ -412,7 +412,7 @@ Equipment transfer history
       "from_user": "admin",
       "to_user": "developer1",
       "transfer_date": "2024-03-20T14:00:00Z",
-      "reason": "Assigned to developer",
+      "reason": "Назначение разработчику",
       "status": "completed",
       "blockchain_tx": "0xabcdef1234567890...",
       "created_at": "2024-03-20T14:00:00Z"
@@ -423,25 +423,25 @@ Equipment transfer history
 
 #### POST /transfers
 
-Create new transfer
+Создание новой передачи
 
-**Request:**
+**Запрос:**
 
 ```json
 {
   "equipment_id": "507f1f77bcf86cd799439015",
   "from_user": "admin",
   "to_user": "developer1",
-  "reason": "Project assignment",
+  "reason": "Назначение для проекта",
   "transfer_date": "2024-03-20T14:00:00Z"
 }
 ```
 
 #### GET /maintenance
 
-Maintenance schedule
+График обслуживания
 
-**Response:**
+**Ответ:**
 
 ```json
 {
@@ -452,7 +452,7 @@ Maintenance schedule
       "equipment_id": "507f1f77bcf86cd799439015",
       "maintenance_type": "routine_inspection",
       "scheduled_date": "2024-04-15T10:00:00Z",
-      "description": "Routine check and cleaning",
+      "description": "Плановый осмотр и чистка",
       "responsible_technician": "tech1",
       "status": "scheduled",
       "created_at": "2024-03-01T12:00:00Z"
@@ -463,13 +463,13 @@ Maintenance schedule
 
 #### POST /maintenance
 
-Schedule maintenance
+Планирование обслуживания
 
 #### GET /blockchain/contract-info
 
-Blockchain contract info
+Информация о блокчейн контракте
 
-**Response:**
+**Ответ:**
 
 ```json
 {
@@ -486,11 +486,11 @@ Blockchain contract info
 
 #### POST /blockchain/deploy
 
-Deploy new contract
+Развертывание нового контракта
 
 #### GET /qr/:equipmentId
 
-Generate QR code for equipment
+Генерация QR-кода для оборудования
 
 ---
 
@@ -500,15 +500,15 @@ Generate QR code for equipment
 
 #### GET /notifications
 
-Get user notifications
+Получение уведомлений пользователя
 
-**Query Parameters:**
+**Query параметры:**
 
-- `unread_only` (boolean) - Only unread
-- `type` (string) - Notification type
-- `limit` (int) - Number of notifications
+- `unread_only` (boolean) - Только непрочитанные
+- `type` (string) - Тип уведомления
+- `limit` (int) - Количество уведомлений
 
-**Response:**
+**Ответ:**
 
 ```json
 {
@@ -518,8 +518,8 @@ Get user notifications
       "id": "507f1f77bcf86cd799439018",
       "user_id": "507f1f77bcf86cd799439011",
       "type": "inventory_low_stock",
-      "title": "Low Stock Alert",
-      "message": "Dell XPS 13 stock is below minimum level",
+      "title": "Низкий остаток товара",
+      "message": "Остаток ноутбуков Dell XPS 13 ниже минимального уровня",
       "is_read": false,
       "created_at": "2024-03-20T15:30:00Z",
       "data": {
@@ -534,16 +534,16 @@ Get user notifications
 
 #### POST /notifications
 
-Create new notification
+Создание нового уведомления
 
-**Request:**
+**Запрос:**
 
 ```json
 {
   "user_id": "507f1f77bcf86cd799439011",
   "type": "equipment_transfer",
-  "title": "Equipment Transfer",
-  "message": "Dell XPS 15 transferred to you",
+  "title": "Передача оборудования",
+  "message": "Вам передан ноутбук Dell XPS 15",
   "data": {
     "equipment_id": "507f1f77bcf86cd799439015",
     "transfer_id": "507f1f77bcf86cd799439016"
@@ -553,17 +553,17 @@ Create new notification
 
 #### PUT /notifications/:id/read
 
-Mark notification as read
+Отметка уведомления как прочитанного
 
 #### DELETE /notifications/:id
 
-Delete notification
+Удаление уведомления
 
 #### GET /notifications/stats
 
-Notification statistics
+Статистика уведомлений
 
-**Response:**
+**Ответ:**
 
 ```json
 {
@@ -583,18 +583,18 @@ Notification statistics
 
 ---
 
-## 🧪 Usage Examples
+## 🧪 Примеры использования
 
-### Full Equipment Transfer Workflow
+### Полный workflow передачи оборудования
 
-1. **Get Equipment List**
+1. **Получение списка оборудования**
 
 ```bash
 curl -X GET "http://localhost:8002/equipment" \
   -H "Authorization: Bearer $JWT_TOKEN"
 ```
 
-2. **Create Transfer**
+2. **Создание передачи**
 
 ```bash
 curl -X POST "http://localhost:8002/transfers" \
@@ -604,34 +604,34 @@ curl -X POST "http://localhost:8002/transfers" \
     "equipment_id": "507f1f77bcf86cd799439015",
     "from_user": "admin",
     "to_user": "developer1",
-    "reason": "Project assignment"
+    "reason": "Назначение для проекта"
   }'
 ```
 
-3. **Check Status in Blockchain**
+3. **Проверка статуса в блокчейн**
 
 ```bash
 curl -X GET "http://localhost:8002/blockchain/contract-info" \
   -H "Authorization: Bearer $JWT_TOKEN"
 ```
 
-### Warehouse Operations Management
+### Управление складскими операциями
 
-1. **Add Item**
+1. **Добавление товара**
 
 ```bash
 curl -X POST "http://localhost:8001/items" \
   -H "Authorization: Bearer $JWT_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Samsung 27 Monitor",
+    "name": "Монитор Samsung 27",
     "category": "monitors",
     "quantity": 10,
     "price": 25000.00
   }'
 ```
 
-2. **Create Invoice**
+2. **Создание накладной**
 
 ```bash
 curl -X POST "http://localhost:8001/invoices" \
@@ -639,7 +639,7 @@ curl -X POST "http://localhost:8001/invoices" \
   -H "Content-Type: application/json" \
   -d '{
     "type": "incoming",
-    "supplier": "TechSupply LLC",
+    "supplier": "ООО ТехПоставка",
     "items": [
       {
         "item_id": "507f1f77bcf86cd799439012",
@@ -650,48 +650,48 @@ curl -X POST "http://localhost:8001/invoices" \
   }'
 ```
 
-## 🔧 Error Codes
+## 🔧 Коды ошибок
 
 ### Auth Service
 
-- `AUTH_001` - Invalid credentials
-- `AUTH_002` - User not found
-- `AUTH_003` - Token expired
-- `AUTH_004` - Insufficient permissions
+- `AUTH_001` - Неверные учетные данные
+- `AUTH_002` - Пользователь не найден
+- `AUTH_003` - Токен истек
+- `AUTH_004` - Недостаточно прав
 
 ### Warehouse Service
 
-- `WH_001` - Item not found
-- `WH_002` - Insufficient stock
-- `WH_003` - Duplicate serial number
-- `WH_004` - Invalid category
+- `WH_001` - Товар не найден
+- `WH_002` - Недостаточно товара на складе
+- `WH_003` - Дублирующийся серийный номер
+- `WH_004` - Недопустимая категория
 
 ### Tracking Service
 
-- `TR_001` - Equipment not found
-- `TR_002` - User cannot transfer equipment
-- `TR_003` - Blockchain transaction failed
-- `TR_004` - QR code cannot be generated
+- `TR_001` - Оборудование не найдено
+- `TR_002` - Пользователь не может передать оборудование
+- `TR_003` - Блокчейн транзакция не удалась
+- `TR_004` - QR-код не может быть сгенерирован
 
 ### Notification Service
 
-- `NOT_001` - Notification not found
-- `NOT_002` - Invalid notification type
-- `NOT_003` - User not found
+- `NOT_001` - Уведомление не найдено
+- `NOT_002` - Недопустимый тип уведомления
+- `NOT_003` - Пользователь не найден
 
 ## 📊 Rate Limiting
 
-All API endpoints have rate limits:
+Все API endpoints имеют ограничения по количеству запросов:
 
-- **General endpoints**: 100 requests per minute
-- **Authentication**: 10 attempts per minute
-- **Record creation**: 50 requests per minute
-- **Search**: 200 requests per minute
+- **Общие endpoint**: 100 запросов в минуту
+- **Аутентификация**: 10 попыток в минуту
+- **Создание записей**: 50 запросов в минуту
+- **Поиск**: 200 запросов в минуту
 
-When limit is exceeded, `429 Too Many Requests` status is returned.
+При превышении лимита возвращается статус `429 Too Many Requests`.
 
-## 🔄 API Versioning
+## 🔄 Версионирование API
 
-Current API version: **v1**
+Текущая версия API: **v1**
 
-For the most up-to-date API documentation, it is recommended to use the Swagger UI interface of each service.
+Для получения самой актуальной документации API рекомендуется использовать Swagger UI интерфейсы каждого сервиса.
