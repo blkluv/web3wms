@@ -1,6 +1,6 @@
-# 🔗 Web3WMS - Система управления складом на блокчейне
+# 🔗 Web3WMS - Blockchain Warehouse Management System
 
-> **Современная система управления складом и отслеживания оборудования с интеграцией блокчейн технологий**
+> **Modern warehouse management and equipment tracking system with blockchain integration**
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Go](https://img.shields.io/badge/Go-00ADD8?style=flat&logo=go&logoColor=white)](https://golang.org/)
@@ -9,119 +9,121 @@
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Ethereum](https://img.shields.io/badge/Ethereum-3C3C3D?style=flat&logo=ethereum&logoColor=white)](https://ethereum.org/)
 
-## 📋 Описание проекта
+[Читать на русском](README.ru.md)
 
-Современная система управления складом с интеграцией блокчейн технологий для прозрачного отслеживания оборудования. Система построена на микросервисной архитектуре и предназначена для автоматизации складских процессов, учета оборудования и обеспечения полной трaceability операций.
+## 📋 Project Description
 
-### 🎯 Ключевые особенности
+A modern warehouse management system with blockchain integration for transparent equipment tracking. The system is built on a microservices architecture and is designed to automate warehouse processes, equipment accounting, and ensure full traceability of operations.
 
-- **🔐 Безопасная аутентификация** с JWT токенами и ролевой моделью доступа
-- **📦 Полное управление складом** с автоматизированным учетом и инвентаризацией
-- **🔗 Blockchain интеграция** для неизменяемого журнала передач оборудования
-- **📊 Система отчетности** с аналитикой и метриками
-- **🔔 Уведомления в реальном времени** через RabbitMQ
-- **📱 Современный веб-интерфейс** на Next.js с адаптивным дизайном
-- **🐳 Контейнеризация** с Docker Compose для простого развертывания
+### 🎯 Key Features
 
-## 🏗️ Архитектура системы
+- **🔐 Secure Authentication** with JWT tokens and role-based access control
+- **📦 Complete Warehouse Management** with automated accounting and inventory
+- **🔗 Blockchain Integration** for an immutable log of equipment transfers
+- **📊 Reporting System** with analytics and metrics
+- **🔔 Real-time Notifications** via RabbitMQ
+- **📱 Modern Web Interface** on Next.js with responsive design
+- **🐳 Containerization** with Docker Compose for easy deployment
 
-### Микросервисы
+## 🏗️ System Architecture
 
-| Сервис                   | Технология              | Порт | Описание                                   |
+### Microservices
+
+| Service                  | Technology              | Port | Description                                |
 | ------------------------ | ----------------------- | ---- | ------------------------------------------ |
-| **Frontend**             | Next.js 15 + Mantine UI | 80   | Веб-интерфейс пользователя                 |
-| **Auth Service**         | Go + MongoDB            | 8000 | Аутентификация и управление пользователями |
-| **Warehouse Service**    | Go + MongoDB            | 8001 | Управление складом и инвентарем            |
-| **Tracking Service**     | Node.js + Express       | 8002 | Отслеживание оборудования + Blockchain     |
-| **Notification Service** | Go + RabbitMQ           | 8003 | Система уведомлений                        |
-| **Analytics Service**    | Go                      | -    | Аналитика (отдельное развертывание)        |
+| **Frontend**             | Next.js 15 + Mantine UI | 80   | User Web Interface                         |
+| **Auth Service**         | Go + MongoDB            | 8000 | Authentication and user management         |
+| **Warehouse Service**    | Go + MongoDB            | 8001 | Warehouse and inventory management         |
+| **Tracking Service**     | Node.js + Express       | 8002 | Equipment tracking + Blockchain            |
+| **Notification Service** | Go + RabbitMQ           | 8003 | Notification system                        |
+| **Analytics Service**    | Go                      | -    | Analytics (separate deployment)            |
 
-### Инфраструктура
+### Infrastructure
 
-- **MongoDB** - Основная база данных (3 отдельные БД для сервисов)
-- **RabbitMQ** - Брокер сообщений для межсервисной коммуникации
-- **Ethereum (Ganache)** - Локальный блокчейн для MVP
-- **Docker & Docker Compose** - Контейнеризация и оркестрация
+- **MongoDB** - Main database (3 separate DBs for services)
+- **RabbitMQ** - Message broker for inter-service communication
+- **Ethereum (Ganache)** - Local blockchain for MVP
+- **Docker & Docker Compose** - Containerization and orchestration
 
-## 🚀 Быстрый старт
+## 🚀 Quick Start
 
-### Предварительные требования
+### Prerequisites
 
-- Docker 20.10+ и Docker Compose 2.0+
-- Node.js 18+ (для разработки frontend)
-- Go 1.21+ (для разработки backend сервисов)
+- Docker 20.10+ and Docker Compose 2.0+
+- Node.js 18+ (for frontend development)
+- Go 1.21+ (for backend services development)
 
-### Запуск системы
+### System Launch
 
-1. **Клонирование репозитория**
+1. **Clone the repository**
 
    ```bash
    git clone https://github.com/oglenyaboss/web3wms.git
    cd warehouse-management-system
    ```
 
-2. **Запуск всей системы**
+2. **Start the entire system**
 
    ```bash
    chmod +x start-system.sh
    ./start-system.sh
    ```
 
-3. **Доступ к системе**
+3. **Access the system**
 
-   - **Веб-интерфейс**: http://localhost
+   - **Web Interface**: http://localhost
 
-4. **Тестовые учетные записи**
+4. **Test Accounts**
 
    ```
-   Администратор:
+   Administrator:
    Email: admin@warehouse.local
-   Пароль: admin123
+   Password: admin123
 
-   Менеджер склада:
+   Warehouse Manager:
    Email: manager@warehouse.local
-   Пароль: manager123
+   Password: manager123
 
-   Оператор:
+   Operator:
    Email: operator@warehouse.local
-   Пароль: operator123
+   Password: operator123
    ```
 
-## 📖 Документация
+## 📖 Documentation
 
-### Архитектурная документация
+### Architectural Documentation
 
-- [📋 Общая архитектура системы](./architecture-documentation.md)
-- [🎨 Архитектура Frontend](./frontend-architecture-documentation.md)
+- [📋 General System Architecture](./architecture-documentation.md)
+- [🎨 Frontend Architecture](./frontend-architecture-documentation.md)
 
-### Коллекции и схемы данных
+### Data Collections and Schemas
 
-Система использует 12 коллекций MongoDB, распределенных по 3 базам данных:
+The system uses 12 MongoDB collections distributed across 3 databases:
 
-- **warehouse_auth** (3 коллекции) - пользователи, аудит, настройки
-- **warehouse_inventory** (6 коллекций) - товары, транзакции, накладные, справочники
-- **warehouse_tracking** (3 коллекции) - оборудование, передачи, обслуживание
+- **warehouse_auth** (3 collections) - users, audit, settings
+- **warehouse_inventory** (6 collections) - items, transactions, invoices, references
+- **warehouse_tracking** (3 collections) - equipment, transfers, maintenance
 
-## 🛠️ Разработка
+## 🛠️ Development
 
-### Структура проекта
+### Project Structure
 
 ```
 📁 mvp/
-├── 🎨 frontend/                  # Next.js приложение
-├── 🔐 auth-service/              # Сервис аутентификации (Go)
-├── 📦 warehouse-service/         # Сервис склада (Go)
-├── 🔗 tracking-service-express/  # Сервис отслеживания (Node.js)
-├── 🔔 notification-service/      # Сервис уведомлений (Go)
-├── 📊 analytics-service/         # Сервис аналитики (Go)
-├── 🐳 docker-compose.yml         # Конфигурация контейнеров
-├── 📋 *.md                       # Документация
-└── 🔧 *.sh                       # Скрипты развертывания
+├── 🎨 frontend/                  # Next.js application
+├── 🔐 auth-service/              # Authentication Service (Go)
+├── 📦 warehouse-service/         # Warehouse Service (Go)
+├── 🔗 tracking-service-express/  # Tracking Service (Node.js)
+├── 🔔 notification-service/      # Notification Service (Go)
+├── 📊 analytics-service/         # Analytics Service (Go)
+├── 🐳 docker-compose.yml         # Container configuration
+├── 📋 *.md                       # Documentation
+└── 🔧 *.sh                       # Deployment scripts
 ```
 
-### Локальная разработка
+### Local Development
 
-#### Frontend разработка
+#### Frontend Development
 
 ```bash
 cd frontend
@@ -129,7 +131,7 @@ npm install
 npm run dev  # http://localhost:3000
 ```
 
-#### Backend разработка
+#### Backend Development
 
 ```bash
 # Auth Service
@@ -153,27 +155,27 @@ go mod tidy
 go run main.go rabbit.go
 ```
 
-### Скрипты для разработки
+### Development Scripts
 
-- `./start-system.sh` - Полный запуск системы
-- `./clean-and-rebuild.sh` - Пересборка всех контейнеров
-- `./clean-and-restart.sh` - Очистка и перезапуск без пересборки
-- `./rebuild-and-restart.sh` - Быстрая пересборка и перезапуск
-- `./check-status.sh` - Проверка статуса всех сервисов
-- `./demo-data-setup.sh` - Загрузка демонстрационных данных
+- `./start-system.sh` - Full system startup
+- `./clean-and-rebuild.sh` - Rebuild all containers
+- `./clean-and-restart.sh` - Clean and restart without rebuild
+- `./rebuild-and-restart.sh` - Fast rebuild and restart
+- `./check-status.sh` - Check status of all services
+- `./demo-data-setup.sh` - Load demo data
 
-## 🔧 Конфигурация
+## 🔧 Configuration
 
-### Переменные окружения
+### Environment Variables
 
 ```bash
-# База данных
+# Database
 MONGO_URI=mongodb://mongo:27017/warehouse_auth
 
-# Безопасность
+# Security
 JWT_SECRET=your_jwt_secret_key_for_mvp
 
-# Сервисы
+# Services
 AUTH_SERVICE_URL=http://auth-service:8000
 RABBITMQ_URI=amqp://guest:guest@rabbitmq:5672/
 
@@ -181,151 +183,151 @@ RABBITMQ_URI=amqp://guest:guest@rabbitmq:5672/
 ETH_NODE_URL=http://ethereum-node:8545
 ```
 
-### Порты сервисов
+### Service Ports
 
-| Сервис               | Внутренний порт | Внешний порт |
-| -------------------- | --------------- | ------------ |
-| Frontend             | 3000            | 80           |
-| Auth Service         | 8000            | 8000         |
-| Warehouse Service    | 8001            | 8001         |
-| Tracking Service     | 8002            | 8002         |
-| Notification Service | 8003            | 8003         |
-| MongoDB              | 27017           | 27017        |
-| RabbitMQ             | 5672            | 5672         |
-| RabbitMQ Management  | 15672           | 15672        |
-| Ganache              | 8545            | 8545         |
+| Service              | Internal Port | External Port |
+| -------------------- | ------------- | ------------- |
+| Frontend             | 3000          | 80            |
+| Auth Service         | 8000          | 8000          |
+| Warehouse Service    | 8001          | 8001          |
+| Tracking Service     | 8002          | 8002          |
+| Notification Service | 8003          | 8003          |
+| MongoDB              | 27017         | 27017         |
+| RabbitMQ             | 5672          | 5672          |
+| RabbitMQ Management  | 15672         | 15672         |
+| Ganache              | 8545          | 8545          |
 
-## 🧪 Тестирование
+## 🧪 Testing
 
-### API тестирование
+### API Testing
 
 ```bash
-# Тестирование всех API endpoints
+# Test all API endpoints
 cd tracking-service-express/scripts
 chmod +x run-api-test.sh
 ./run-api-test.sh
 ```
 
-### Демонстрационные данные
+### Demo Data
 
 ```bash
-# Загрузка тестовых данных
+# Load test data
 ./demo-data-setup.sh
 ```
 
-### Проверка blockchain
+### Blockchain Verification
 
 ```bash
 cd tracking-service-express/scripts
-node check-ethereum.js      # Проверка подключения к Ethereum
-node check-contract.js      # Проверка смарт-контракта
-node issue-equipment.js     # Тест выпуска оборудования в блокчейн
+node check-ethereum.js      # Check connection to Ethereum
+node check-contract.js      # Check smart contract
+node issue-equipment.js     # Test equipment issuance to blockchain
 ```
 
-## 📊 Функциональность
+## 📊 Functionality
 
-### 🔐 Управление пользователями
+### 🔐 User Management
 
-- Регистрация и аутентификация пользователей
-- Ролевая модель доступа (Admin, Manager, Operator, Viewer)
-- Автоматическое создание Ethereum адресов
-- Аудит действий пользователей
+- User registration and authentication
+- Role-based access control (Admin, Manager, Operator, Viewer)
+- Automatic Ethereum address creation
+- User action audit
 
-### 📦 Управление складом
+### 📦 Warehouse Management
 
-- Каталог оборудования с детальными характеристиками
-- Система накладных (приходные/расходные)
-- Автоматический учет остатков и движения товаров
-- Уведомления о критических остатках
-- Инвентаризация и отчетность
+- Equipment catalog with detailed characteristics
+- Invoice system (incoming/outgoing)
+- Automated inventory and movement tracking
+- Critical stock notifications
+- Inventory and reporting
 
-### 🔗 Отслеживание оборудования
+### 🔗 Equipment Tracking
 
-- Регистрация оборудования в блокчейн
-- Неизменяемый журнал передач между сотрудниками
-- QR-коды для быстрой идентификации
-- История обслуживания и ремонтов
-- Геолокация и статусы оборудования
+- Equipment registration in blockchain
+- Immutable log of transfers between employees
+- QR codes for quick identification
+- Maintenance and repair history
+- Geolocation and equipment statuses
 
-### 🔔 Система уведомлений
+### 🔔 Notification System
 
-- Уведомления в реальном времени
-- Email рассылки (готовность к интеграции)
-- Push уведомления в веб-интерфейсе
-- Настраиваемые типы уведомлений
+- Real-time notifications
+- Email newsletters (integration ready)
+- Push notifications in web interface
+- Customizable notification types
 
-### 📊 Отчетность и аналитика
+### 📊 Reporting and Analytics
 
-- Дашборд с ключевыми метриками
-- Графики движения товаров
-- Отчеты по использованию оборудования
-- Экспорт данных в различных форматах
+- Dashboard with key metrics
+- Item movement charts
+- Equipment usage reports
+- Data export in various formats
 
-## 🔒 Безопасность
+## 🔒 Security
 
-- **JWT аутентификация** с refresh токенами
-- **Ролевая модель доступа** с гранулярными правами
-- **Валидация данных** на всех уровнях
-- **Аудит действий** пользователей
-- **Защищенные API endpoints** с middleware авторизации
-- **Blockchain immutability** для критических операций
+- **JWT Authentication** with refresh tokens
+- **Role-Based Access Control** with granular permissions
+- **Data Validation** at all levels
+- **User Action Audit**
+- **Protected API Endpoints** with authorization middleware
+- **Blockchain Immutability** for critical operations
 
 ## 🚀 Deployment
 
-### Production ready features
+### Production Ready Features
 
-- ✅ Docker контейнеризация всех сервисов
-- ✅ Health checks для мониторинга
-- ✅ Логирование и error handling
-- ✅ Graceful shutdown механизмы
-- ✅ Environment-based конфигурация
-- ✅ Database migrations и seed данные
+- ✅ Docker containerization of all services
+- ✅ Health checks for monitoring
+- ✅ Logging and error handling
+- ✅ Graceful shutdown mechanisms
+- ✅ Environment-based configuration
+- ✅ Database migrations and seed data
 
-### Готовность к масштабированию
+### Scalability Readiness
 
-- Микросервисная архитектура
-- Stateless сервисы
-- Готовность к горизонтальному масштабированию
-- API Gateway готовность (Nginx/Traefik)
-- Kubernetes манифесты (в разработке)
+- Microservices architecture
+- Stateless services
+- Horizontal scaling readiness
+- API Gateway readiness (Nginx/Traefik)
+- Kubernetes manifests (in development)
 
-## 📈 Дорожная карта
+## 📈 Roadmap
 
-### Текущий MVP (v1.0)
+### Current MVP (v1.0)
 
-- ✅ Базовая функциональность всех сервисов
-- ✅ Веб-интерфейс с основными возможностями
-- ✅ Blockchain интеграция для отслеживания
-- ✅ Демонстрационные данные и тесты
+- ✅ Basic functionality of all services
+- ✅ Web interface with main features
+- ✅ Blockchain integration for tracking
+- ✅ Demo data and tests
 
-### Планируемые улучшения (v2.0)
+### Planned Improvements (v2.0)
 
-- 📱 Мобильное приложение (React Native)
-- 🔍 Elasticsearch для поиска и аналитики
-- 📊 Расширенная аналитика и BI
-- 🌐 Multi-tenant архитектура
-- 🔐 OAuth2/OpenID Connect интеграция
-- 📡 IoT сенсоры для автоматического отслеживания
+- 📱 Mobile app (React Native)
+- 🔍 Elasticsearch for search and analytics
+- 📊 Advanced analytics and BI
+- 🌐 Multi-tenant architecture
+- 🔐 OAuth2/OpenID Connect integration
+- 📡 IoT sensors for automated tracking
 
-## 👨‍💻 Автор
+## 👨‍💻 Author
 
-**Ложкин Леня** - Дипломный проект  
+**Lozhkin Lenya** - Diploma Project
 📧 Email: oglenyaboss@icloud.com
 💼 GitHub: [GitHub](https://github.com/oglenyaboss)
 ✈️ Telegram: [Telegram](https://t.me/ll_ogl)
 
-## 📄 Лицензия
+## 📄 License
 
-Этот проект разработан в рамках дипломной работы. Все права защищены.
+This project is developed as part of a diploma thesis. All rights reserved.
 
-## 🙏 Благодарности
+## 🙏 Acknowledgements
 
-- Преподавателям и научному руководителю Чичикову Сергею Анатольевичу
-- Сообществу open-source разработчиков
-- Авторам используемых библиотек и фреймворков
+- To teachers and supervisor Chichikov Sergey Anatolyevich
+- To the open-source developer community
+- To authors of used libraries and frameworks
 
 ---
 
-⭐ **Если проект понравился, поставьте звездочку!** ⭐
+⭐ **If you like the project, give it a star!** ⭐
 
-> _Этот проект демонстрирует навыки полнофункциональной разработки современных веб-приложений с использованием микросервисной архитектуры, blockchain технологий и современного стека технологий._
+> _This project demonstrates skills in full-stack development of modern web applications using microservices architecture, blockchain technologies, and a modern technology stack._

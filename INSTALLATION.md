@@ -1,119 +1,119 @@
-# Руководство по установке и запуску
+# Installation and Launch Guide
 
-## 🎯 Цель документа
+## 🎯 Document Goal
 
-Данное руководство поможет вам развернуть и запустить систему управления складом и отслеживания оборудования на вашем локальном компьютере или сервере.
+This guide will help you deploy and launch the warehouse management and equipment tracking system on your local computer or server.
 
-## 📋 Системные требования
+## 📋 System Requirements
 
-### Минимальные требования
+### Minimum Requirements
 
-- **ОС**: Windows 10+, macOS 10.15+, Ubuntu 18.04+ или другой Linux дистрибутив
-- **RAM**: 8 GB (рекомендуется 16 GB)
-- **Дисковое пространство**: 10 GB свободного места
-- **CPU**: Intel Core i5 или AMD Ryzen 5 (2+ ядра)
+- **OS**: Windows 10+, macOS 10.15+, Ubuntu 18.04+ or other Linux distribution
+- **RAM**: 8 GB (16 GB recommended)
+- **Disk Space**: 10 GB free space
+- **CPU**: Intel Core i5 or AMD Ryzen 5 (2+ cores)
 
-### Необходимое ПО
+### Required Software
 
-#### Обязательно для запуска
+#### Mandatory for Launch
 
-- **Docker Desktop 4.0+** - [Скачать](https://www.docker.com/products/docker-desktop)
-- **Docker Compose 2.0+** (обычно входит в Docker Desktop)
-- **Git** - [Скачать](https://git-scm.com/downloads)
+- **Docker Desktop 4.0+** - [Download](https://www.docker.com/products/docker-desktop)
+- **Docker Compose 2.0+** (usually included in Docker Desktop)
+- **Git** - [Download](https://git-scm.com/downloads)
 
-#### Для разработки (опционально)
+#### For Development (Optional)
 
-- **Node.js 18+** - [Скачать](https://nodejs.org/en/download/)
-- **Go 1.21+** - [Скачать](https://golang.org/dl/)
-- **Visual Studio Code** или другая IDE
+- **Node.js 18+** - [Download](https://nodejs.org/en/download/)
+- **Go 1.21+** - [Download](https://golang.org/dl/)
+- **Visual Studio Code** or other IDE
 
-## 🚀 Пошаговая установка
+## 🚀 Step-by-Step Installation
 
-### Шаг 1: Установка Docker
+### Step 1: Install Docker
 
 #### Windows
 
-1. Скачайте Docker Desktop с официального сайта
-2. Запустите установщик и следуйте инструкциям
-3. Перезагрузите компьютер после установки
-4. Запустите Docker Desktop и дождитесь полной загрузки
+1. Download Docker Desktop from the official website
+2. Run the installer and follow instructions
+3. Restart computer after installation
+4. Start Docker Desktop and wait for full load
 
 #### macOS
 
-1. Скачайте Docker Desktop для Mac
-2. Перетащите Docker в папку Applications
-3. Запустите Docker из папки Applications
-4. Предоставьте необходимые разрешения системы
+1. Download Docker Desktop for Mac
+2. Drag Docker to Applications folder
+3. Start Docker from Applications folder
+4. Grant necessary system permissions
 
 #### Linux (Ubuntu/Debian)
 
 ```bash
-# Обновление пакетов
+# Update packages
 sudo apt update
 
-# Установка необходимых пакетов
+# Install required packages
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 
-# Добавление официального GPG ключа Docker
+# Add official Docker GPG key
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-# Добавление репозитория Docker
+# Add Docker repository
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-# Установка Docker
+# Install Docker
 sudo apt update
 sudo apt install docker-ce docker-ce-cli containerd.io
 
-# Установка Docker Compose
+# Install Docker Compose
 sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
-# Добавление пользователя в группу docker
+# Add user to docker group
 sudo usermod -aG docker $USER
 
-# Перезайдите в систему или выполните:
+# Log out and back in or run:
 newgrp docker
 ```
 
-### Шаг 2: Проверка установки
+### Step 2: Verify Installation
 
 ```bash
-# Проверка Docker
+# Check Docker
 docker --version
-# Ожидаемый вывод: Docker version 24.0.x
+# Expected output: Docker version 24.0.x
 
-# Проверка Docker Compose
+# Check Docker Compose
 docker-compose --version
-# Ожидаемый вывод: Docker Compose version 2.x.x
+# Expected output: Docker Compose version 2.x.x
 ```
 
-### Шаг 3: Клонирование проекта
+### Step 3: Clone Project
 
 ```bash
-# Клонирование репозитория
+# Clone repository
 git clone https://github.com/yourusername/warehouse-management-system.git
 
-# Переход в директорию проекта
+# Navigate to project directory
 cd warehouse-management-system
 ```
 
-### Шаг 4: Настройка окружения (опционально)
+### Step 4: Environment Setup (Optional)
 
-Создайте файл `.env` для кастомизации настроек:
+Create `.env` file for customization:
 
 ```bash
-# Создание файла окружения
+# Create environment file
 cp .env.example .env
 ```
 
-Пример содержимого `.env`:
+Example `.env` content:
 
 ```env
-# Базы данных
+# Databases
 MONGO_URI=mongodb://mongo:27017
 POSTGRES_URI=postgresql://postgres:password@postgres:5432/warehouse
 
-# Безопасность
+# Security
 JWT_SECRET=your_super_secret_jwt_key_change_in_production
 ENCRYPTION_KEY=your_encryption_key_32_characters_long
 
@@ -129,62 +129,62 @@ ENABLE_NOTIFICATIONS=true
 ENABLE_ANALYTICS=false
 ```
 
-## 🚀 Запуск системы
+## 🚀 Launching the System
 
-### Автоматический запуск (рекомендуется)
+### Automatic Launch (Recommended)
 
 ```bash
-# Сделать скрипт исполняемым
+# Make script executable
 chmod +x start-system.sh
 
-# Запуск всей системы
+# Start the entire system
 ./start-system.sh
 ```
 
-Этот скрипт автоматически:
+This script will automatically:
 
-- Создаст необходимые Docker сети
-- Запустит все сервисы в правильном порядке
-- Дождется готовности баз данных
-- Загрузит демонстрационные данные
-- Выведет информацию о доступных URL
+- Create necessary Docker networks
+- Start all services in the correct order
+- Wait for database readiness
+- Load demo data
+- Display available URLs
 
-### Ручной запуск
+### Manual Launch
 
 ```bash
-# Создание Docker сети
+# Create Docker network
 docker network create warehouse-network
 
-# Запуск инфраструктурных сервисов
+# Start infrastructure services
 docker-compose up -d mongo rabbitmq ethereum-node
 
-# Ожидание готовности баз данных (30-60 секунд)
+# Wait for databases (30-60 seconds)
 sleep 60
 
-# Запуск backend сервисов
+# Start backend services
 docker-compose up -d auth-service warehouse-service tracking-service notification-service
 
-# Ожидание готовности API (30 секунд)
+# Wait for API (30 seconds)
 sleep 30
 
-# Запуск frontend
+# Start frontend
 docker-compose up -d frontend
 
-# Просмотр логов всех сервисов
+# View logs of all services
 docker-compose logs -f
 ```
 
-### Проверка статуса
+### Check Status
 
 ```bash
-# Использование встроенного скрипта
+# Use built-in script
 ./check-status.sh
 
-# Или проверка вручную
+# Or check manually
 docker-compose ps
 ```
 
-Ожидаемый вывод:
+Expected output:
 
 ```
 Name                    Command               State                    Ports
@@ -198,292 +198,292 @@ mvp_tracking-service_1  docker-entrypoint.sh npm ...  Up      0.0.0.0:8002->8002
 mvp_warehouse-service_1 ./warehouse-service           Up      0.0.0.0:8001->8001/tcp
 ```
 
-## 🌐 Доступ к системе
+## 🌐 Accessing the System
 
-### Основные URL
+### Main URLs
 
-| Сервис               | URL                   | Описание               |
+| Service              | URL                   | Description            |
 | -------------------- | --------------------- | ---------------------- |
-| **Веб-интерфейс**    | http://localhost      | Главное приложение     |
-| **Auth API**         | http://localhost:8000 | API аутентификации     |
-| **Warehouse API**    | http://localhost:8001 | API управления складом |
-| **Tracking API**     | http://localhost:8002 | API отслеживания       |
-| **Notification API** | http://localhost:8003 | API уведомлений        |
+| **Web Interface**    | http://localhost      | Main application       |
+| **Auth API**         | http://localhost:8000 | Authentication API     |
+| **Warehouse API**    | http://localhost:8001 | Warehouse API          |
+| **Tracking API**     | http://localhost:8002 | Tracking API           |
+| **Notification API** | http://localhost:8003 | Notification API       |
 
-### API документация (Swagger)
+### API Documentation (Swagger)
 
-| Сервис               | Swagger URL                     |
+| Service              | Swagger URL                     |
 | -------------------- | ------------------------------- |
 | Auth Service         | http://localhost:8000/swagger/  |
 | Warehouse Service    | http://localhost:8001/swagger/  |
 | Tracking Service     | http://localhost:8002/api-docs/ |
 | Notification Service | http://localhost:8003/swagger/  |
 
-### Административные панели
+### Administrative Panels
 
-| Сервис                  | URL                       | Логин/Пароль |
-| ----------------------- | ------------------------- | ------------ |
-| **RabbitMQ Management** | http://localhost:15672    | guest/guest  |
-| **MongoDB**             | mongodb://localhost:27017 | -            |
+| Service                 | URL                       | Login/Password |
+| ----------------------- | ------------------------- | -------------- |
+| **RabbitMQ Management** | http://localhost:15672    | guest/guest    |
+| **MongoDB**             | mongodb://localhost:27017 | -              |
 
-### Тестовые учетные записи
+### Test Accounts
 
 ```
-👑 Администратор:
+👑 Administrator:
 Email: admin@warehouse.local
-Пароль: admin123
+Password: admin123
 
-👨‍💼 Менеджер склада:
+👨‍💼 Warehouse Manager:
 Email: manager@warehouse.local
-Пароль: manager123
+Password: manager123
 
-👷 Оператор склада:
+👷 Warehouse Operator:
 Email: operator@warehouse.local
-Пароль: operator123
+Password: operator123
 
-👁️ Только просмотр:
+👁️ Viewer:
 Email: viewer@warehouse.local
-Пароль: viewer123
+Password: viewer123
 ```
 
-## 🧪 Загрузка тестовых данных
+## 🧪 Loading Test Data
 
-### Автоматическая загрузка
+### Automatic Loading
 
 ```bash
-# Загрузка демонстрационных данных
+# Load demo data
 ./demo-data-setup.sh
 ```
 
-### Ручная загрузка
+### Manual Loading
 
 ```bash
-# Загрузка данных через Node.js скрипт
+# Load data via Node.js script
 cd tracking-service-express
 node demo-data-script.js
 
-# Или через API calls
+# Or via API calls
 curl -X POST http://localhost:8000/api/demo-data
 curl -X POST http://localhost:8001/api/demo-data
 curl -X POST http://localhost:8002/api/demo-data
 ```
 
-### Что включают тестовые данные
+### What Test Data Includes
 
-- **10 пользователей** с разными ролями
-- **50+ единиц оборудования** различных категорий
-- **100+ транзакций** склада
-- **20+ накладных** (приходных и расходных)
-- **15+ передач оборудования** с blockchain записями
-- **Графики обслуживания** оборудования
-- **Категории и справочники**
+- **10 users** with different roles
+- **50+ equipment items** of various categories
+- **100+ warehouse transactions**
+- **20+ invoices** (incoming and outgoing)
+- **15+ equipment transfers** with blockchain records
+- **Maintenance schedules** for equipment
+- **Categories and references**
 
-## 🔧 Устранение неполадок
+## 🔧 Troubleshooting
 
-### Проблема: Порты заняты
+### Problem: Ports Occupied
 
-**Симптомы**: Ошибки типа "port 8000 already in use"
+**Symptoms**: Errors like "port 8000 already in use"
 
-**Решение**:
+**Solution**:
 
 ```bash
-# Проверить какие процессы используют порты
+# Check which processes are using ports
 netstat -tulpn | grep :8000
-# или на macOS:
+# or on macOS:
 lsof -i :8000
 
-# Остановить конфликтующие процессы
+# Kill conflicting processes
 sudo kill -9 <PID>
 
-# Или изменить порты в docker-compose.yml
+# Or change ports in docker-compose.yml
 ```
 
-### Проблема: Недостаточно памяти
+### Problem: Insufficient Memory
 
-**Симптомы**: Контейнеры падают с OOMKilled
+**Symptoms**: Containers crash with OOMKilled
 
-**Решение**:
+**Solution**:
 
 ```bash
-# Увеличить память для Docker Desktop (в настройках)
-# Или остановить ненужные приложения
+# Increase memory for Docker Desktop (in settings)
+# Or stop unnecessary applications
 
-# Проверить использование памяти
+# Check memory usage
 docker stats
 
-# Очистить неиспользуемые образы
+# Clean unused images
 docker system prune -a
 ```
 
-### Проблема: База данных не готова
+### Problem: Database Not Ready
 
-**Симптомы**: Ошибки подключения к MongoDB
+**Symptoms**: Connection errors to MongoDB
 
-**Решение**:
+**Solution**:
 
 ```bash
-# Проверить статус MongoDB
+# Check MongoDB status
 docker-compose logs mongo
 
-# Перезапустить только MongoDB
+# Restart only MongoDB
 docker-compose restart mongo
 
-# Дождаться готовности (может занять 1-2 минуты)
+# Wait for readiness (can take 1-2 minutes)
 docker-compose logs -f mongo | grep "waiting for connections"
 ```
 
-### Проблема: Frontend не загружается
+### Problem: Frontend Not Loading
 
-**Симптомы**: "This site can't be reached" на http://localhost
+**Symptoms**: "This site can't be reached" on http://localhost
 
-**Решение**:
+**Solution**:
 
 ```bash
-# Проверить статус frontend контейнера
+# Check frontend container status
 docker-compose logs frontend
 
-# Перестроить frontend
+# Rebuild frontend
 docker-compose build frontend
 docker-compose up -d frontend
 
-# Очистить кэш браузера (Ctrl+F5)
+# Clear browser cache (Ctrl+F5)
 ```
 
-### Проблема: API недоступны
+### Problem: API Unavailable
 
-**Симптомы**: Ошибки 502/503 при обращении к API
+**Symptoms**: 502/503 errors when accessing API
 
-**Решение**:
+**Solution**:
 
 ```bash
-# Проверить статус всех сервисов
+# Check status of all services
 ./check-status.sh
 
-# Перезапустить проблемный сервис
+# Restart problematic service
 docker-compose restart auth-service
 
-# Проверить логи
+# Check logs
 docker-compose logs -f auth-service
 ```
 
-## 🔄 Управление системой
+## 🔄 System Management
 
-### Остановка системы
+### Stopping the System
 
 ```bash
-# Остановка всех сервисов
+# Stop all services
 docker-compose down
 
-# Остановка с удалением volumes (ОСТОРОЖНО: удалит все данные)
+# Stop and remove volumes (WARNING: deletes all data)
 docker-compose down -v
 
-# Остановка конкретного сервиса
+# Stop specific service
 docker-compose stop frontend
 ```
 
-### Перезапуск сервисов
+### Restarting Services
 
 ```bash
-# Полный перезапуск
+# Full restart
 ./clean-and-restart.sh
 
-# Перезапуск без пересборки
+# Restart without rebuild
 docker-compose restart
 
-# Перезапуск конкретного сервиса
+# Restart specific service
 docker-compose restart warehouse-service
 ```
 
-### Обновление системы
+### Updating the System
 
 ```bash
-# Получение последних изменений
+# Pull latest changes
 git pull origin main
 
-# Пересборка и перезапуск
+# Rebuild and restart
 ./clean-and-rebuild.sh
 ```
 
-### Просмотр логов
+### Viewing Logs
 
 ```bash
-# Логи всех сервисов
+# Logs of all services
 docker-compose logs -f
 
-# Логи конкретного сервиса
+# Logs of specific service
 docker-compose logs -f auth-service
 
-# Логи с ограничением по времени
+# Logs with time limit
 docker-compose logs --since="2h" frontend
 ```
 
-## 📊 Мониторинг и производительность
+## 📊 Monitoring and Performance
 
-### Проверка ресурсов
+### Resource Check
 
 ```bash
-# Использование ресурсов контейнерами
+# Container resource usage
 docker stats
 
-# Дисковое пространство
+# Disk space
 docker system df
 
-# Размер образов
+# Image sizes
 docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}"
 ```
 
-### Очистка системы
+### System Cleanup
 
 ```bash
-# Очистка неиспользуемых ресурсов
+# Clean unused resources
 docker system prune
 
-# Полная очистка (ОСТОРОЖНО!)
+# Full cleanup (WARNING!)
 docker system prune -a --volumes
 ```
 
-## 🆘 Получение помощи
+## 🆘 Getting Help
 
-### Проверочный список
+### Checklist
 
-- [ ] Docker запущен и работает корректно
-- [ ] Все необходимые порты свободны
-- [ ] Достаточно свободной памяти (8+ GB)
-- [ ] Интернет соединение активно (для скачивания образов)
-- [ ] Антивирус не блокирует Docker
+- [ ] Docker is running correctly
+- [ ] All necessary ports are free
+- [ ] Sufficient free memory (8+ GB)
+- [ ] Internet connection active (for downloading images)
+- [ ] Antivirus not blocking Docker
 
-### Сбор диагностической информации
+### Collecting Diagnostic Info
 
 ```bash
-# Информация о системе
+# System info
 docker version
 docker-compose version
 docker info
 
-# Статус сервисов
+# Service status
 docker-compose ps
 ./check-status.sh
 
-# Логи всех сервисов
+# All service logs
 docker-compose logs > system-logs.txt
 ```
 
-### Контакты для поддержки
+### Support Contacts
 
 📧 **Email**: your.email@example.com  
 🐛 **Issues**: [GitHub Issues](https://github.com/yourusername/warehouse-management-system/issues)  
-📖 **Документация**: [Wiki](https://github.com/yourusername/warehouse-management-system/wiki)
+📖 **Documentation**: [Wiki](https://github.com/yourusername/warehouse-management-system/wiki)
 
 ---
 
-## ✅ Проверка успешной установки
+## ✅ Installation Verification
 
-После запуска системы проверьте:
+After starting the system, verify:
 
-1. **Веб-интерфейс доступен**: http://localhost
-2. **Успешный вход**: используя admin@warehouse.local / admin123
-3. **API отвечают**: http://localhost:8000/health
-4. **Данные загружены**: видны тестовые товары и оборудование
-5. **Уведомления работают**: появляются в интерфейсе
+1. **Web Interface accessible**: http://localhost
+2. **Successful login**: using admin@warehouse.local / admin123
+3. **API responding**: http://localhost:8000/health
+4. **Data loaded**: test items and equipment visible
+5. **Notifications working**: appearing in interface
 
-🎉 **Поздравляем! Система успешно установлена и готова к использованию!**
+🎉 **Congratulations! System successfully installed and ready to use!**

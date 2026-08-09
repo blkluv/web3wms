@@ -1,133 +1,129 @@
-# Участие в проекте
+# Contributing
 
-Спасибо за интерес к проекту системы управления складом и отслеживания оборудования! Этот документ содержит рекомендации по участию в разработке проекта.
+Thank you for your interest in the warehouse management and equipment tracking system! This document contains guidelines for contributing to the project.
 
-## 📋 Содержание
+## 📋 Table of Contents
 
-- [Кодекс поведения](#кодекс-поведения)
-- [Как сообщить об ошибке](#как-сообщить-об-ошибке)
-- [Как предложить улучшение](#как-предложить-улучшение)
-- [Процесс разработки](#процесс-разработки)
-- [Стандарты кода](#стандарты-кода)
-- [Настройка среды разработки](#настройка-среды-разработки)
-- [Pull Request процесс](#pull-request-процесс)
+- [Code of Conduct](#code-of-conduct)
+- [How to Report a Bug](#how-to-report-a-bug)
+- [How to Suggest an Improvement](#how-to-suggest-an-improvement)
+- [Development Process](#development-process)
+- [Code Standards](#code-standards)
+- [Setting Up Development Environment](#setting-up-development-environment)
+- [Pull Request Process](#pull-request-process)
 
-## 🤝 Кодекс поведения
+## 🤝 Code of Conduct
 
-Участвуя в этом проекте, вы соглашаетесь следовать нашему кодексу поведения:
+By participating in this project, you agree to abide by our code of conduct:
 
-- Используйте дружелюбный
-- Уважайте различные точки зрения и опыт
-- Принимайте конструктивную критику
-- Сосредотачивайтесь на том, что лучше для сообщества
-- Проявляйте эмпатию к другим участникам
+- Be friendly and patient
+- Respect different points of view and experiences
+- Accept constructive criticism
+- Focus on what is best for the community
+- Show empathy towards other members
 
-## 🐛 Как сообщить об ошибке
+## 🐛 How to Report a Bug
 
-### Перед созданием issue
+### Before Creating an Issue
 
-1. **Проверьте существующие issues** - возможно, проблема уже известна
-2. **Убедитесь, что это действительно ошибка** - проблема воспроизводится стабильно
-3. **Проверьте документацию** - возможно, это ожидаемое поведение
+1. **Check existing issues** - the problem might already be known
+2. **Ensure it is actually a bug** - the problem reproduces consistently
+3. **Check documentation** - it might be expected behavior
 
-### Создание bug report
+### Creating a Bug Report
 
-Используйте следующий шаблон для создания отчета об ошибке:
+Use the following template to create a bug report:
 
 ```markdown
-## Описание ошибки
+## Bug Description
 
-Краткое описание того, что произошло.
+A brief description of what happened.
 
-## Шаги для воспроизведения
+## Steps to Reproduce
 
-1. Перейти на страницу '...'
-2. Нажать на кнопку '...'
-3. Прокрутить вниз до '...'
-4. Увидеть ошибку
+1. Go to page '...'
+2. Click on button '...'
+3. Scroll down to '...'
+4. See error
 
-## Ожидаемое поведение
+## Expected Behavior
 
-Что должно было произойти.
+What should have happened.
 
-## Фактическое поведение
+## Actual Behavior
 
-Что произошло на самом деле.
+What actually happened.
 
-## Скриншоты
+## Screenshots
 
-Если применимо, добавьте скриншоты для объяснения проблемы.
+If applicable, add screenshots to explain the problem.
 
-## Окружение
+## Environment
 
-- ОС: [например, Windows 10, macOS 12.1, Ubuntu 20.04]
-- Браузер: [например, Chrome 96, Firefox 95, Safari 15]
-- Версия проекта: [например, v1.0.0]
-- Docker версия: [например, 20.10.12]
+- OS: [e.g., Windows 10, macOS 12.1, Ubuntu 20.04]
+- Browser: [e.g., Chrome 96, Firefox 95, Safari 15]
+- Project Version: [e.g., v1.0.0]
+- Docker Version: [e.g., 20.10.12]
 
-## Дополнительная информация
+## Additional Information
 
-Любая другая информация о проблеме.
+Any other information about the problem.
 
-## Логи
+## Logs
+
+Paste relevant logs here
 ```
 
-Вставьте соответствующие логи здесь
-
-```
-
-```
-
-## 💡 Как предложить улучшение
+## 💡 How to Suggest an Improvement
 
 ### Feature Request
 
-Используйте следующий шаблон для предложения новой функциональности:
+Use the following template to suggest new functionality:
 
 ```markdown
-## Описание функциональности
+## Feature Description
 
-Ясное и краткое описание того, что вы хотите добавить.
+A clear and concise description of what you want to add.
 
-## Мотивация
+## Motivation
 
-Объясните, зачем нужна эта функциональность. Какую проблему она решает?
+Explain why this functionality is needed. What problem does it solve?
 
-## Детальное описание
+## Detailed Description
 
-Подробное описание того, как должна работать функциональность.
+Detailed description of how the functionality should work.
 
-## Возможные альтернативы
+## Possible Alternatives
 
-Краткое описание альтернативных решений или функций, которые вы рассматривали.
+Brief description of alternative solutions or features you considered.
 
-## Дополнительный контекст
+## Additional Context
 
-Любой другой контекст или скриншоты о запросе функциональности.
+Any other context or screenshots about the feature request.
 ```
 
-## 🔄 Процесс разработки
+## 🔄 Development Process
 
-### Жизненный цикл issue
+### Issue Lifecycle
 
-1. **Создание** - Issue создается с соответствующими метками
-2. **Триаж** - Мейнтейнеры оценивают и назначают приоритет
-3. **Назначение** - Issue назначается разработчику
-4. **Разработка** - Создается feature branch для работы
-5. **Тестирование** - Изменения тестируются локально
-6. **Pull Request** - Создается PR с описанием изменений
-7. **Code Review** - Мейнтейнеры проверяют код
-8. **Merge** - После одобрения изменения мержатся в main
+1. **Creation** - Issue is created with appropriate labels
+2. **Triage** - Maintainers evaluate and prioritize
+3. **Assignment** - Issue is assigned to a developer
+4. **Development** - Feature branch is created for work
+5. **Testing** - Changes are tested locally
+6. **Pull Request** - PR is created with description of changes
+7. **Code Review** - Maintainers review the code
+8. **Merge** - After approval, changes are merged into main
 
-### Ветвление (Branching)
+### Branching Strategy
 
-Мы используем следующую стратегию ветвления:
+We use the following branching strategy:
 
-- `main` - стабильная ветка для production
-- `develop` - ветка для разработки
-- `feature/название-функции` - ветки для новых функций
-- `bugfix/описание-ошибки` - ветки для исправления ошибок
-- `hotfix/критическое-исправление` - ветки для критических исправлений
+- `main` - stable branch for production
+- `develop` - development branch
+- `feature/feature-name` - branches for new features
+- `bugfix/bug-description` - branches for bug fixes
+- `hotfix/critical-fix` - branches for critical fixes
 
 ### Naming Conventions
 
@@ -142,7 +138,7 @@ hotfix/security-vulnerability
 
 #### Commits
 
-Используйте формат [Conventional Commits](https://www.conventionalcommits.org/):
+Use [Conventional Commits](https://www.conventionalcommits.org/):
 
 ```
 type(scope): description
@@ -156,22 +152,22 @@ test(tracking): add unit tests for equipment service
 chore(deps): update dependencies to latest versions
 ```
 
-**Типы коммитов:**
+**Commit Types:**
 
-- `feat` - новая функциональность
-- `fix` - исправление ошибки
-- `docs` - изменения в документации
-- `style` - форматирование, отсутствующие точки с запятой и т.д.
-- `refactor` - рефакторинг кода
-- `test` - добавление тестов
-- `chore` - обновление задач сборки, конфигураций и т.д.
+- `feat` - new functionality
+- `fix` - bug fix
+- `docs` - documentation changes
+- `style` - formatting, missing semicolons, etc.
+- `refactor` - code refactoring
+- `test` - adding tests
+- `chore` - updating build tasks, configurations, etc.
 
-## 📝 Стандарты кода
+## 📝 Code Standards
 
 ### Go (Backend Services)
 
 ```go
-// ✅ Правильно
+// ✅ Correct
 type User struct {
     ID        primitive.ObjectID `bson:"_id,omitempty" json:"id"`
     Username  string             `bson:"username" json:"username" validate:"required,min=3,max=50"`
@@ -190,19 +186,19 @@ func (s *UserService) CreateUser(ctx context.Context, user *User) error {
 }
 ```
 
-**Стандарты:**
+**Standards:**
 
-- Используйте `gofmt` для форматирования
-- Следуйте [Effective Go](https://golang.org/doc/effective_go.html)
-- Добавляйте godoc комментарии для публичных функций
-- Используйте context.Context для cancellation
-- Обрабатывайте все ошибки
-- Используйте meaningful переменные и функции
+- Use `gofmt` for formatting
+- Follow [Effective Go](https://golang.org/doc/effective_go.html)
+- Add godoc comments for public functions
+- Use context.Context for cancellation
+- Handle all errors
+- Use meaningful variables and functions
 
 ### TypeScript/React (Frontend)
 
 ```typescript
-// ✅ Правильно
+// ✅ Correct
 interface User {
   id: string;
   username: string;
@@ -231,19 +227,19 @@ const UserProfile: React.FC<UserProfileProps> = ({ user, onUpdate }) => {
 };
 ```
 
-**Стандарты:**
+**Standards:**
 
-- Используйте TypeScript строго (no `any`)
-- Следуйте React hooks правилам
-- Используйте функциональные компоненты
-- Добавляйте prop types через TypeScript interfaces
-- Используйте meaningful названия компонентов
-- Следуйте Prettier конфигурации
+- Use TypeScript strictly (no `any`)
+- Follow React hooks rules
+- Use functional components
+- Add prop types via TypeScript interfaces
+- Use meaningful component names
+- Follow Prettier configuration
 
 ### Database (MongoDB)
 
 ```javascript
-// ✅ Правильно - структура коллекции
+// ✅ Correct - collection structure
 {
   "_id": ObjectId("..."),
   "username": "john_doe",
@@ -255,25 +251,25 @@ const UserProfile: React.FC<UserProfileProps> = ({ user, onUpdate }) => {
 }
 ```
 
-**Стандарты:**
+**Standards:**
 
-- Используйте snake_case для полей
-- Всегда включайте `created_at` и `updated_at`
-- Добавляйте подходящие индексы
-- Используйте валидацию схем
-- Нормализуйте данные где это уместно
+- Use snake_case for fields
+- Always include `created_at` and `updated_at`
+- Add appropriate indexes
+- Use schema validation
+- Normalize data where appropriate
 
-## 🛠️ Настройка среды разработки
+## 🛠️ Setting Up Development Environment
 
-### Требования
+### Requirements
 
-- **Go 1.21+** для backend разработки
-- **Node.js 18+** для frontend и tracking service
-- **Docker & Docker Compose** для локального окружения
-- **MongoDB Compass** (опционально) для работы с БД
-- **VS Code** или другая IDE с Go и TypeScript поддержкой
+- **Go 1.21+** for backend development
+- **Node.js 18+** for frontend and tracking service
+- **Docker & Docker Compose** for local environment
+- **MongoDB Compass** (optional) for DB management
+- **VS Code** or another IDE with Go and TypeScript support
 
-### Рекомендуемые VS Code расширения
+### Recommended VS Code Extensions
 
 ```json
 {
@@ -288,23 +284,23 @@ const UserProfile: React.FC<UserProfileProps> = ({ user, onUpdate }) => {
 }
 ```
 
-### Настройка проекта
+### Project Setup
 
-1. **Клонирование репозитория**
+1. **Clone the repository**
 
    ```bash
    git clone https://github.com/yourusername/warehouse-management-system.git
    cd warehouse-management-system
    ```
 
-2. **Установка зависимостей Frontend**
+2. **Install Frontend Dependencies**
 
    ```bash
    cd frontend
    npm install
    ```
 
-3. **Установка зависимостей Go модулей**
+3. **Install Go Module Dependencies**
 
    ```bash
    cd auth-service && go mod tidy
@@ -312,21 +308,21 @@ const UserProfile: React.FC<UserProfileProps> = ({ user, onUpdate }) => {
    cd ../notification-service && go mod tidy
    ```
 
-4. **Установка зависимостей Tracking Service**
+4. **Install Tracking Service Dependencies**
 
    ```bash
    cd tracking-service-express
    npm install
    ```
 
-5. **Запуск в режиме разработки**
+5. **Start in Development Mode**
 
    ```bash
-   # Запуск инфраструктурных сервисов
+   # Start infrastructure services
    docker-compose up -d mongo rabbitmq ethereum-node
 
-   # Запуск сервисов в development режиме
-   # (каждый в отдельном терминале)
+   # Start services in development mode
+   # (each in a separate terminal)
    cd auth-service && go run *.go
    cd warehouse-service && go run *.go
    cd notification-service && go run *.go
@@ -334,9 +330,9 @@ const UserProfile: React.FC<UserProfileProps> = ({ user, onUpdate }) => {
    cd frontend && npm run dev
    ```
 
-### Переменные окружения для разработки
+### Environment Variables for Development
 
-Создайте `.env.local` файлы для каждого сервиса:
+Create `.env.local` files for each service:
 
 ```bash
 # auth-service/.env.local
@@ -360,25 +356,25 @@ NEXT_PUBLIC_API_WAREHOUSE_URL=http://localhost:8001
 NEXT_PUBLIC_API_TRACKING_URL=http://localhost:8002
 ```
 
-## 🔍 Pull Request процесс
+## 🔍 Pull Request Process
 
-### Создание Pull Request
+### Creating a Pull Request
 
-1. **Создайте feature branch**
+1. **Create a feature branch**
 
    ```bash
    git checkout -b feature/amazing-new-feature
    ```
 
-2. **Внесите изменения и протестируйте**
+2. **Make changes and test**
 
    ```bash
-   # Ваши изменения...
+   # Your changes...
    git add .
    git commit -m "feat(warehouse): add inventory alerts system"
    ```
 
-3. **Убедитесь, что код проходит линтеры**
+3. **Ensure code passes linters**
 
    ```bash
    # Go
@@ -391,82 +387,82 @@ NEXT_PUBLIC_API_TRACKING_URL=http://localhost:8002
    npm run type-check
    ```
 
-4. **Запустите тесты**
+4. **Run tests**
 
    ```bash
-   # Go тесты
+   # Go tests
    go test ./...
 
-   # Frontend тесты
+   # Frontend tests
    npm test
    ```
 
-5. **Push и создайте PR**
+5. **Push and create PR**
    ```bash
    git push origin feature/amazing-new-feature
    ```
 
-### Шаблон Pull Request
+### Pull Request Template
 
 ```markdown
-## Описание
+## Description
 
-Краткое описание изменений в этом PR.
+Brief description of changes in this PR.
 
-## Тип изменения
+## Change Type
 
-- [ ] Bug fix (не ломающее изменение, которое исправляет проблему)
-- [ ] New feature (не ломающее изменение, которое добавляет функциональность)
-- [ ] Breaking change (изменение, которое может сломать существующую функциональность)
-- [ ] Documentation update (изменения в документации)
+- [ ] Bug fix (non-breaking change which fixes an issue)
+- [ ] New feature (non-breaking change which adds functionality)
+- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] Documentation update
 
-## Как было протестировано?
+## How Has This Been Tested?
 
-Опишите тесты, которые вы выполнили для проверки изменений.
+Describe the tests that you ran to verify your changes.
 
-## Чеклист
+## Checklist
 
-- [ ] Мой код следует стандартам стиля этого проекта
-- [ ] Я провел самопроверку своего кода
-- [ ] Я прокомментировал сложные участки кода
-- [ ] Я обновил документацию (если необходимо)
-- [ ] Мои изменения не создают новых предупреждений
-- [ ] Я добавил тесты, которые подтверждают работу моих изменений
-- [ ] Новые и существующие unit тесты проходят локально
+- [ ] My code follows the style guidelines of this project
+- [ ] I have performed a self-review of my own code
+- [ ] I have commented my code, particularly in hard-to-understand areas
+- [ ] I have updated the documentation (if applicable)
+- [ ] My changes generate no new warnings
+- [ ] I have added tests that prove my fix is effective or that my feature works
+- [ ] New and existing unit tests pass locally
 
-## Скриншоты (если применимо)
+## Screenshots (if applicable)
 
-Добавьте скриншоты изменений в UI.
+Add screenshots of UI changes.
 
-## Связанные Issues
+## Related Issues
 
 Closes #123
 ```
 
 ### Code Review Guidelines
 
-**Для авторов PR:**
+**For PR Authors:**
 
-- Делайте PR небольшими и сфокусированными
-- Пишите четкие commit сообщения
-- Добавляйте тесты для новой функциональности
-- Обновляйте документацию при необходимости
-- Отвечайте на комментарии ревьюеров
+- Keep PRs small and focused
+- Write clear commit messages
+- Add tests for new functionality
+- Update documentation if needed
+- Respond to reviewer comments
 
-**Для ревьюеров:**
+**For Reviewers:**
 
-- Проверяйте логику и архитектуру
-- Убедитесь в наличии тестов
-- Проверьте производительность и безопасность
-- Предлагайте конструктивную обратную связь
-- Одобряйте PR только после полной проверки
+- Check logic and architecture
+- Ensure tests are present
+- Check performance and security
+- Offer constructive feedback
+- Approve PR only after full check
 
-## 🧪 Тестирование
+## 🧪 Testing
 
-### Unit тесты
+### Unit Tests
 
 ```go
-// Go пример
+// Go example
 func TestCreateUser(t *testing.T) {
     service := NewUserService(mockDB)
 
@@ -482,7 +478,7 @@ func TestCreateUser(t *testing.T) {
 ```
 
 ```typescript
-// TypeScript пример
+// TypeScript example
 describe("UserProfile component", () => {
   it("should render user information correctly", () => {
     const user = mockUser();
@@ -494,29 +490,29 @@ describe("UserProfile component", () => {
 });
 ```
 
-### Integration тесты
+### Integration Tests
 
 ```bash
-# API тесты
+# API tests
 cd tracking-service-express/scripts
 ./run-api-test.sh
 
-# E2E тесты (если реализованы)
+# E2E tests (if implemented)
 npm run test:e2e
 ```
 
-## 📚 Дополнительные ресурсы
+## 📚 Additional Resources
 
 - [Go Style Guide](https://github.com/golang/go/wiki/CodeReviewComments)
 - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/)
 - [MongoDB Best Practices](https://docs.mongodb.com/manual/administration/production-notes/)
 - [Docker Best Practices](https://docs.docker.com/develop/dev-best-practices/)
 
-## ❓ Вопросы?
+## ❓ Questions?
 
-Если у вас есть вопросы о процессе участия:
+If you have questions about the contribution process:
 
 - 📧 Email: oglenyaboss@icloud.com
 - 📱 Telegram: @ll_ogl
 
-Спасибо за ваш вклад в проект! 🚀
+Thank you for contributing to the project! 🚀
